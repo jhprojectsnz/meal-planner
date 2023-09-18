@@ -1,4 +1,4 @@
-import defaultImg from "../assets/default-image.jpg";
+import defaultImg from "../../assets/default-image.jpg";
 import { BiCheck } from "react-icons/bi";
 import { FaHeart } from "react-icons/fa";
 

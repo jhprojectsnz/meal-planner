@@ -1,5 +1,5 @@
-import CloseButton from "./closebutton";
-import defaultImg from "../assets/default-image.jpg";
+import CloseButton from "../CloseButton/CloseButton";
+import defaultImg from "../../assets/default-image.jpg";
 import { FaHeart } from "react-icons/fa";
 
 export default function RecipeSummaries({

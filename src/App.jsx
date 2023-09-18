@@ -1,8 +1,8 @@
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
-import Nav from "./components/nav.jsx";
-import ShoppingList from "./components/shoppinglist";
-import Recipes from "./components/recipes";
+import Nav from "./components/Nav/Nav.jsx";
+import ShoppingList from "./components/ShoppingList/ShoppingList";
+import Recipes from "./components/Recipes/Recipes";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);

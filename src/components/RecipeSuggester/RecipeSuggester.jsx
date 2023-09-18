@@ -1,8 +1,8 @@
-import MealTypes from "./mealtypes";
-import Filters from "./filters";
+import MealTypes from "../MealTypes/MealTypes";
+import Filters from "../Filters/Filters";
 import { useState, useCallback } from "react";
-import NewRecipePreview from "./newrecipepreview";
-import CloseButton from "./closebutton";
+import NewRecipePreview from "../NewRecipePreview/NewRecipePreview";
+import CloseButton from "../CloseButton/CloseButton";
 
 export default function RecipeSuggester({
   setRecipeData,

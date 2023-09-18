@@ -1,10 +1,10 @@
-import beefImg from "../assets/beef.jpg";
-import chickenImg from "../assets/chicken.jpg";
-import fishImg from "../assets/fish.jpg";
-import porkImg from "../assets/pork.jpg";
-import lambImg from "../assets/lamb.jpg";
-import vegetarianImg from "../assets/vegetarian.jpg";
-import veganImg from "../assets/vegan.jpg";
+import beefImg from "../../assets/beef.jpg";
+import chickenImg from "../../assets/chicken.jpg";
+import fishImg from "../../assets/fish.jpg";
+import porkImg from "../../assets/pork.jpg";
+import lambImg from "../../assets/lamb.jpg";
+import vegetarianImg from "../../assets/vegetarian.jpg";
+import veganImg from "../../assets/vegan.jpg";
 
 export default function MealTypes({ recipeType, setRecipeType }) {
   const mealTypesAndImages = {

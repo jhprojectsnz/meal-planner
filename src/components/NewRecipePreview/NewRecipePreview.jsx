@@ -1,4 +1,4 @@
-import defaultImg from "../assets/default-image.jpg";
+import defaultImg from "../../assets/default-image.jpg";
 import { BiRefresh, BiCheck } from "react-icons/bi";
 
 export default function NewRecipePreview({
