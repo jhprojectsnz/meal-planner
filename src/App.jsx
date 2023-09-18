@@ -6,7 +6,7 @@ import Recipes from "./components/Recipes/Recipes";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
-  const [contentDisplayed, setContentDisplayed] = useState("display recipes");
+  const [contentDisplayed, setContentDisplayed] = useState("recipes");
   const [ingredientDisplayStatus, setIngredientDisplayStatus] = useState({});
   const [favourites, setFavourites] = useState([
     {
@@ -339,7 +339,7 @@ function App() {
     },
   ]);
 
-  //return scroll to top when switching between recipes and shopping list
+  // Return scroll to top when switching between recipes and shopping list
   const appElement = useRef(null);
   useEffect(() => {
     appElement.current.scroll(0, 0);
@@ -355,7 +355,7 @@ function App() {
         setContentDisplayed={setContentDisplayed}
       />
       <main>
-        {contentDisplayed === "display list" && (
+        {contentDisplayed === "list" && (
           <ShoppingList
             ingredientDisplayStatus={ingredientDisplayStatus}
             setIngredientDisplayStatus={setIngredientDisplayStatus}
@@ -363,7 +363,7 @@ function App() {
             setRecipeData={setRecipeData}
           />
         )}
-        {contentDisplayed === "display recipes" && (
+        {contentDisplayed === "recipes" && (
           <Recipes
             recipeData={recipeData}
             setRecipeData={setRecipeData}
