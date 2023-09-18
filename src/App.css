@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: "Rubik", Arial, Helvetica, sans-serif;
+}
+
+main {
+  margin-top: 80px;
+  padding-top: 10px;
+  padding-bottom: 3rem;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid rgb(15, 15, 110);
+  padding: 5px 20px;
+  color: rgb(15, 15, 110);
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgb(182, 180, 180);
+  cursor: pointer;
+}
+
+.confirm {
+  border: 3px solid rgb(23, 110, 15);
+  color: rgb(23, 110, 15);
+  background-color: white;
+}
+
+.reject {
+  border: 3px solid rgb(156, 19, 19);
+  color: rgb(156, 19, 19);
+  background-color: white;
+}
+
+.bold-btn {
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid rgb(15, 15, 110);
+  padding: 5px 20px;
+  background-color: rgb(15, 15, 110);
+  color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgb(182, 180, 180);
+  cursor: pointer;
+}
+
+.major-heading {
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: rgb(15, 15, 110);
+  border-bottom: solid 2px rgb(15, 15, 110);
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+.section-hr {
+  height: 1px;
+  width: 90vw;
+  background-color: rgb(15, 15, 110);
+  border: none;
+}
+
+.prevent-select {
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: rgb(15, 15, 110);
+}
+
+footer p {
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 100;
+  margin: 0.5rem;
+}
+
+@media (min-width: 400px) {
+  .major-heading {
+    font-size: 1.4rem;
+  }
+}
