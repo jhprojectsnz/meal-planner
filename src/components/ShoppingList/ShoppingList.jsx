@@ -8,30 +8,35 @@ export default function ShoppingList({
   setIngredientDisplayStatus,
   ingredientDisplayStatus,
 }) {
-  function sortIngredientsByCategory(data) {
+  function sortIngredientsByCategory(allRecipes) {
+    // Create shopping list object to be populated with "aisles" and "ingredients"
     const shoppingList = {};
-    data.forEach((recipe) => {
+
+    allRecipes.forEach((recipe) => {
       recipe.extendedIngredients.forEach((ingredient) => {
+        // Find aisle of ingredient, if not available set to "Other"
         let aisle = ingredient.aisle ? ingredient.aisle.split(";")[0] : "Other";
         if (aisle === "?") aisle = "Other";
 
+        // Data required to make ingredient object
         const ingredientName = ingredient.name;
         const ingredientId = ingredient.id;
         const ingredientAmount = Math.round(ingredient.amount * 100) / 100;
         const ingredientQuantity =
           `${ingredientAmount} ${ingredient.unit}`.trim();
 
-        if (aisle in shoppingList) {
-          if (ingredientName in shoppingList[aisle]) {
-            shoppingList[aisle][ingredientName].amount.push(ingredientQuantity);
-          } else {
-            shoppingList[aisle][ingredientName] = {
-              id: ingredientId,
-              name: ingredientName,
-              amount: [ingredientQuantity],
-            };
-          }
+        if (aisle in shoppingList && ingredientName in shoppingList[aisle]) {
+          // Aisle and ingredient already in shopping list - add amount to ingredient
+          shoppingList[aisle][ingredientName].amount.push(ingredientQuantity);
+        } else if (aisle in shoppingList) {
+          // Aisle in shopping list (but ingredient is not) - add ingredient to asile
+          shoppingList[aisle][ingredientName] = {
+            id: ingredientId,
+            name: ingredientName,
+            amount: [ingredientQuantity],
+          };
         } else {
+          // Aisle not in shopping list - add aisle with ingredient inside
           shoppingList[aisle] = {
             [ingredientName]: {
               id: ingredientId,
@@ -78,7 +83,7 @@ export default function ShoppingList({
   const [showDeleted, setShowDeleted] = useState(false);
   const [sortBy, setSortBy] = useState("category");
   const categoryOrderObject = useMemo(() => {
-    //change the array below to change the order the categories appear in list
+    // Change the array below to change the order the categories appear in list
     const categoryOrder = [
       "Produce",
       "Seafood",
