@@ -17,7 +17,7 @@ export default function NewMeal({
   return (
     <>
       {newRecipeSource !== "favourites" ? (
-        <section className="meal">
+        <section className="new-meal">
           <CloseButton onClickFunction={() => setShowNewMeal(false)} />
           {!newRecipeSource && (
             <RecipeSource setNewRecipeSource={setNewRecipeSource} />

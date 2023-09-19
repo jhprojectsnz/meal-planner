@@ -29,7 +29,7 @@ export default function Favourites({
         return (
           <div className="favourite">
             <RecipeSummary recipe={recipe} />
-            <div className="btn-container">
+            <div className="fav-btn-container">
               <button className="btn" onClick={() => setShowFullRecipe(recipe)}>
                 Full recipe
               </button>

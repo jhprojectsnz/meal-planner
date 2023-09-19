@@ -7,13 +7,19 @@
   cursor: pointer;
 }
 
+.meal-types p {
+  text-transform: capitalize;
+  font-family: inherit;
+  font-size: 0.9rem;
+}
+
 .meal-type-btn {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
   min-width: 70px;
-  padding: 0.2rem;
+  padding: 0.5rem;
   border: solid 2px transparent !important;
 }
 

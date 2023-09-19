@@ -37,7 +37,7 @@ export default function RecipeList({
               onClickFunction={() => handleDeleteRecipe(recipe.id)}
             />
             <RecipeSummary recipe={recipe} />
-            <div className="btn-container">
+            <div className="recipe-list-btn-container">
               <button
                 className="btn"
                 onClick={() => handleFavouritesClick(recipe)}

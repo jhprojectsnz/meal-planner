@@ -1,8 +1,6 @@
 import "./RecipeModal.css";
 
 export default function RecipeModal({ showFullRecipe, setShowFullRecipe }) {
-  console.log(showFullRecipe);
-
   const ingredientsList = showFullRecipe.extendedIngredients.map(
     (ingredient) => {
       const ingredientName = ingredient.name;

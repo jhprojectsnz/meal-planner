@@ -41,6 +41,17 @@ main {
   color: white;
 }
 
+.fav-icon {
+  height: 12px;
+  width: 12px;
+  margin-left: 0.2rem;
+  margin-bottom: 1px;
+}
+
+.fav-selected {
+  color: rgb(169, 10, 37);
+}
+
 .major-heading {
   width: 90%;
   max-width: 600px;

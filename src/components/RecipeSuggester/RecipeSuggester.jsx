@@ -85,7 +85,7 @@ export default function RecipeSuggester({
               </span>
             </p>
           )}
-          <div className="btn-container">
+          <div className="suggester-btn-container">
             <button className="btn" onClick={() => setShowFilters(true)}>
               Filters...
             </button>

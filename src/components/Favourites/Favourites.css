@@ -9,8 +9,15 @@
   border-bottom: solid 1px var(--main-color);
 }
 
+.fav-btn-container {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+}
+
 .fav-btn-confirm {
+  margin: 0.5rem;
   border: 3px solid rgb(23, 110, 15);
-  border-radius: 20px;
   color: rgb(23, 110, 15);
+  border-radius: 20px;
 }
