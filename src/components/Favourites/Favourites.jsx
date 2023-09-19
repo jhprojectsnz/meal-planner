@@ -1,6 +1,7 @@
-import defaultImg from "../../assets/default-image.jpg";
+import "./Favourites.css";
 import { BiCheck } from "react-icons/bi";
 import { FaHeart } from "react-icons/fa";
+import RecipeSummary from "../RecipeSummary/RecipeSummary";
 
 export default function Favourites({
   favourites,
@@ -10,15 +11,13 @@ export default function Favourites({
   setShowNewMeal,
   setNewRecipeSource,
 }) {
-  const replaceRegex = /<\/*b>/gi;
-
-  function addFavouriteToList(recipe) {
-    setRecipeData((prev) => {
+  function addRecipeToList(recipe) {
+    setRecipeData((prevList) => {
       // Check if recipe is already in list, if so do not modify list (avoid duplication in recipe list)
-      let recipeNotInList =
-        prev.filter((item) => item.id === recipe.id).length === 0;
-      if (recipeNotInList) return [...prev, recipe];
-      return prev;
+      let recipeInList = prevList.some(
+        (listRecipe) => listRecipe.id === recipe.id
+      );
+      return recipeInList ? prevList : [...prevList, recipe];
     });
     setShowNewMeal(false);
   }
@@ -27,25 +26,9 @@ export default function Favourites({
     <>
       <h3 className="major-heading">Favourites</h3>
       {favourites.map((recipe) => {
-        const mealSummary = recipe.summary
-          ? `${recipe.summary.split(".")[0].replace(replaceRegex, "")}.`
-          : "";
         return (
-          <div className="meal">
-            <h5>{recipe.title}</h5>
-            <div className="meal-img-container">
-              <img
-                key={recipe.id}
-                className="meal-img"
-                src={recipe.image || defaultImg}
-                alt="recipe serving example"
-              ></img>
-            </div>
-            <div className="recipe-facts">
-              <p>Ready in: {recipe.readyInMinutes} mins</p>
-              <p>Servings: {recipe.servings}</p>
-            </div>
-            <p className="recipe-summary">{mealSummary}</p>
+          <div className="favourite">
+            <RecipeSummary recipe={recipe} />
             <div className="btn-container">
               <button className="btn" onClick={() => setShowFullRecipe(recipe)}>
                 Full recipe
@@ -64,8 +47,8 @@ export default function Favourites({
             </div>
             <div className="btn-container">
               <button
-                className="btn confirm"
-                onClick={() => addFavouriteToList(recipe)}
+                className="btn fav-btn-confirm"
+                onClick={() => addRecipeToList(recipe)}
               >
                 Add to list
                 <BiCheck className="btn-icon" />

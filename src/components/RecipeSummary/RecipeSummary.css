@@ -1,0 +1,34 @@
+.recipe-img-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 200px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.recipe-img {
+  width: fit-content;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.recipe-facts {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  flex-wrap: wrap;
+}
+
+.recipe-facts p {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.recipe-summary {
+  padding: 0.5rem;
+  font-size: 0.9rem;
+}

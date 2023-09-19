@@ -3,7 +3,7 @@ import { useState } from "react";
 import RecipeModal from "../RecipeModal/RecipeModal";
 import NewMeal from "../NewMeal/NewMeal";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
-import RecipeSummaries from "../RecipeSummaries/RecipeSummaries";
+import RecipeList from "../RecipeList/RecipeList";
 
 export default function Recipes({
   recipeData,
@@ -32,7 +32,7 @@ export default function Recipes({
     <>
       {!showNewMeal && recipeData.length > 0 && (
         <>
-          <RecipeSummaries
+          <RecipeList
             recipeData={recipeData}
             showFullRecipe={showFullRecipe}
             setShowFullRecipe={setShowFullRecipe}

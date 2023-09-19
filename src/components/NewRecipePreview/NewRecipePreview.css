@@ -1,25 +1,3 @@
-.meal-img-container {
-  display: flex;
-  justify-content: center;
-  width: 80%;
-  height: 200px;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.meal-img {
-  width: fit-content;
-  height: 100%;
-  border-radius: 10px;
-}
-
-.recipe-facts p {
-  text-transform: capitalize;
-  font-size: 0.8rem;
-  text-align: center;
-  white-space: nowrap;
-}
-
 .preview-btn-container {
   display: flex;
   gap: 1rem;

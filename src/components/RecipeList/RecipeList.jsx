@@ -1,18 +1,15 @@
-import "./RecipeSummaries.css";
+import "./RecipeList.css";
 import CloseButton from "../CloseButton/CloseButton";
-import defaultImg from "../../assets/default-image.jpg";
 import { FaHeart } from "react-icons/fa";
+import RecipeSummary from "../RecipeSummary/RecipeSummary";
 
-export default function RecipeSummaries({
+export default function RecipeList({
   recipeData,
   setShowFullRecipe,
   favourites,
   setFavourites,
   setShowDeleteRecipeModal,
 }) {
-  // Regex below used to remove html elements from recipe summaries
-  const recipeSummaryTidyRegex = /<\/*b>/gi;
-
   function handleFavouritesClick(recipe) {
     setFavourites((prevFavourites) => {
       // Check if clicked recipe is currently a favourite
@@ -31,34 +28,15 @@ export default function RecipeSummaries({
   }
 
   return (
-    <section className="recipes">
+    <section className="recipe-list">
       <h3 className="major-heading">Recipes</h3>
-      {recipeData.map((recipe, index) => {
-        // If there is a meal summary take the first sentence and remove html characters, otherwise empty string
-        const recipeSummary = recipe.summary
-          ? `${recipe.summary
-              .split(".")[0]
-              .replace(recipeSummaryTidyRegex, "")}.`
-          : "";
+      {recipeData.map((recipe) => {
         return (
           <div className="recipe" key={recipe.id}>
             <CloseButton
               onClickFunction={() => handleDeleteRecipe(recipe.id)}
             />
-            <div className="recipe-title-container">
-              <span className="recipe-number">{index + 1}</span>
-              <h5>{recipe.title}</h5>
-            </div>
-            <img
-              className="recipe-img"
-              src={recipe.image || defaultImg}
-              alt="recipe serving example"
-            />
-            <div className="recipe-facts">
-              <p>Ready in: {recipe.readyInMinutes} mins</p>
-              <p>Servings: {recipe.servings}</p>
-            </div>
-            <p className="recipe-summary">{recipeSummary}</p>
+            <RecipeSummary recipe={recipe} />
             <div className="btn-container">
               <button
                 className="btn"
