@@ -349,7 +349,7 @@ function App() {
   console.log("render App");
 
   return (
-    <div className="App" ref={appElement}>
+    <div className="app" ref={appElement}>
       <Nav
         recipeData={recipeData}
         contentDisplayed={contentDisplayed}

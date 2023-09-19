@@ -4,28 +4,24 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-.App {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-x: hidden;
   font-family: "Rubik", Arial, Helvetica, sans-serif;
 }
 
+.app {
+  /* Styles below to push footer to bottem */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 main {
-  margin-top: 80px;
-  padding-top: 10px;
-  padding-bottom: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 0 3rem;
 }
 
 .btn {
-  /* width: fit-content; */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -56,10 +52,6 @@ main {
   border-bottom: solid 2px rgb(15, 15, 110);
 }
 
-h5 {
-  font-size: 1rem;
-}
-
 .section-hr {
   height: 1px;
   width: 90vw;
@@ -74,12 +66,11 @@ h5 {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: auto;
   background-color: rgb(15, 15, 110);
 }
 
