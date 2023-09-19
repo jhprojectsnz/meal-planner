@@ -51,7 +51,7 @@ export default function Favourites({
                 onClick={() => addRecipeToList(recipe)}
               >
                 Add to list
-                <BiCheck className="btn-icon" />
+                <BiCheck className="fav-btn-icon" />
               </button>
             </div>
           </div>
