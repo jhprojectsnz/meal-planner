@@ -3,10 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import Nav from "./components/Nav/Nav.jsx";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
 import Recipes from "./components/Recipes/Recipes";
+import Intro from "./components/Intro/Intro";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
-  const [contentDisplayed, setContentDisplayed] = useState("recipes");
+  const [contentDisplayed, setContentDisplayed] = useState("home");
   const [ingredientDisplayStatus, setIngredientDisplayStatus] = useState({});
   const [favourites, setFavourites] = useState([
     {
@@ -355,6 +356,9 @@ function App() {
         setContentDisplayed={setContentDisplayed}
       />
       <main>
+        {contentDisplayed === "home" && (
+          <Intro setContentDisplayed={setContentDisplayed} />
+        )}
         {contentDisplayed === "list" && (
           <ShoppingList
             ingredientDisplayStatus={ingredientDisplayStatus}

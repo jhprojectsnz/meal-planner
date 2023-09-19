@@ -1,6 +1,9 @@
 import "./ConfirmModal.css";
 
-export default function ConfirmModal({ setConfirmModalIndex, removeRecipe }) {
+export default function ConfirmModal({
+  setShowDeleteRecipeModal,
+  removeRecipe,
+}) {
   return (
     <div className="modal-background">
       <div className="confirm-modal">
@@ -12,7 +15,7 @@ export default function ConfirmModal({ setConfirmModalIndex, removeRecipe }) {
           <button className="btn" onClick={removeRecipe}>
             Delete
           </button>
-          <button className="btn" onClick={() => setConfirmModalIndex(-1)}>
+          <button className="btn" onClick={() => setShowDeleteRecipeModal(0)}>
             Go back
           </button>
         </div>

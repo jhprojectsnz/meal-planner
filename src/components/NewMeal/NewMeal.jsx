@@ -3,6 +3,7 @@ import RecipeSource from "../RecipeSource/RecipeSource";
 import Favourites from "../Favourites/Favourites";
 import RecipeSuggester from "../RecipeSuggester/RecipeSuggester";
 import { useState } from "react";
+import CloseButton from "../CloseButton/CloseButton";
 
 export default function NewMeal({
   setRecipeData,
@@ -15,20 +16,21 @@ export default function NewMeal({
 
   return (
     <>
-      {!newRecipeSource && (
-        <RecipeSource
-          setNewRecipeSource={setNewRecipeSource}
-          setShowNewMeal={setShowNewMeal}
-        />
-      )}
-      {newRecipeSource === "suggester" && (
-        <RecipeSuggester
-          setRecipeData={setRecipeData}
-          setShowNewMeal={setShowNewMeal}
-          setShowFullRecipe={setShowFullRecipe}
-        />
-      )}
-      {newRecipeSource === "favourites" && (
+      {newRecipeSource !== "favourites" ? (
+        <section className="meal">
+          <CloseButton onClickFunction={() => setShowNewMeal(false)} />
+          {!newRecipeSource && (
+            <RecipeSource setNewRecipeSource={setNewRecipeSource} />
+          )}
+          {newRecipeSource === "suggester" && (
+            <RecipeSuggester
+              setRecipeData={setRecipeData}
+              setShowNewMeal={setShowNewMeal}
+              setShowFullRecipe={setShowFullRecipe}
+            />
+          )}
+        </section>
+      ) : (
         <Favourites
           favourites={favourites}
           setFavourites={setFavourites}

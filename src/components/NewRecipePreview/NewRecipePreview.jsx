@@ -1,3 +1,4 @@
+import "./NewRecipePreview.css";
 import defaultImg from "../../assets/default-image.jpg";
 import { BiRefresh, BiCheck } from "react-icons/bi";
 
@@ -9,7 +10,7 @@ export default function NewRecipePreview({
   setRecipeData,
   getSingleMealData,
 }) {
-  //if there is a meal summary take the first sentence and remove html characters, otherwise empty string
+  // If there is a meal summary take the first sentence and remove html characters, otherwise empty string
   const replaceRegex = /<\/*b>/gi;
   const mealSummary = currentNewRecipe.summary
     ? `${currentNewRecipe.summary.split(".")[0].replace(replaceRegex, "")}.`
@@ -43,14 +44,14 @@ export default function NewRecipePreview({
       >
         Full recipe
       </button>
-      <div className="btn-container">
-        <button className="btn confirm" onClick={confirmNewRecipe}>
+      <div className="preview-btn-container">
+        <button className="btn preview-btn-confirm" onClick={confirmNewRecipe}>
           Add to list
-          <BiCheck className="btn-icon" />
+          <BiCheck className="preview-btn-icon" />
         </button>
-        <button className="btn reject" onClick={getSingleMealData}>
+        <button className="btn preview-btn-reject" onClick={getSingleMealData}>
           Swap
-          <BiRefresh className="btn-icon" />
+          <BiRefresh className="preview-btn-icon" />
         </button>
       </div>
     </>

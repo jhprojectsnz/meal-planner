@@ -1,0 +1,17 @@
+.intro-section {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 30px;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: solid 1px rgb(15, 15, 110);
+}
+
+.intro-text {
+  width: 90%;
+  text-align: center;
+  padding: 0.5rem;
+}

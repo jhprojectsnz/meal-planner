@@ -2,31 +2,26 @@ import { GiHotMeal } from "react-icons/gi";
 import { FaHeart } from "react-icons/fa";
 import "./RecipeSource.css";
 
-export default function RecipeSource({ setNewRecipeSource, setShowNewMeal }) {
+export default function RecipeSource({ setNewRecipeSource }) {
   return (
     <>
-      <div className="meal">
-        <h5>Add recipe from...</h5>
-        <section className="recipe-source-container">
-          <div
-            className="recipe-source"
-            onClick={() => setNewRecipeSource("suggester")}
-          >
-            <GiHotMeal className="recipe-source-icon" />
-            <p className="prevent-select">Recipe suggester</p>
-          </div>
-          <div
-            className="recipe-source"
-            onClick={() => setNewRecipeSource("favourites")}
-          >
-            <FaHeart className="recipe-source-icon" />
-            <p className="prevent-select">Favourites</p>
-          </div>
-        </section>
+      <h5>Add recipe from...</h5>
+      <div className="recipe-source-buttons">
+        <button
+          className="recipe-source-button prevent-select"
+          onClick={() => setNewRecipeSource("suggester")}
+        >
+          <GiHotMeal className="recipe-source-icon" />
+          Recipe suggester
+        </button>
+        <button
+          className="recipe-source-button prevent-select"
+          onClick={() => setNewRecipeSource("favourites")}
+        >
+          <FaHeart className="recipe-source-icon" />
+          Favourites
+        </button>
       </div>
-      <button className="btn" onClick={() => setShowNewMeal(false)}>
-        Back
-      </button>
     </>
   );
 }

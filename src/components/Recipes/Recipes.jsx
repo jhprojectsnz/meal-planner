@@ -1,9 +1,8 @@
-import { useState } from "react";
 import "./Recipes.css";
+import { useState } from "react";
 import RecipeModal from "../RecipeModal/RecipeModal";
 import NewMeal from "../NewMeal/NewMeal";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
-import Intro from "../Intro/Intro";
 import RecipeSummaries from "../RecipeSummaries/RecipeSummaries";
 
 export default function Recipes({
@@ -13,49 +12,43 @@ export default function Recipes({
   setFavourites,
 }) {
   const [showFullRecipe, setShowFullRecipe] = useState({});
-  const [confirmModalIndex, setConfirmModalIndex] = useState(-1);
+  const [showDeleteRecipeModal, setShowDeleteRecipeModal] = useState(0);
   const [showNewMeal, setShowNewMeal] = useState(false);
 
-  function handleCloseRecipe(e) {
-    setConfirmModalIndex(e.target.parentNode.dataset.index);
-  }
-
-  function addRecipe() {
+  function handleAddRecipe() {
     setShowNewMeal(true);
   }
 
-  function removeRecipe() {
+  function handleRemoveRecipe() {
     setRecipeData((prev) => {
-      return [...prev].filter((meal, index) => {
-        return parseInt(confirmModalIndex) !== index;
-      });
+      return [...prev].filter(
+        (recipe) => parseInt(showDeleteRecipeModal) !== recipe.id
+      );
     });
-    setConfirmModalIndex(-1);
+    setShowDeleteRecipeModal(0);
   }
 
   return (
     <>
-      {!showNewMeal && recipeData.length === 0 && <Intro />}
       {!showNewMeal && recipeData.length > 0 && (
-        <RecipeSummaries
-          recipeData={recipeData}
-          showFullRecipe={showFullRecipe}
-          setShowFullRecipe={setShowFullRecipe}
-          handleCloseRecipe={handleCloseRecipe}
-          setFavourites={setFavourites}
-          favourites={favourites}
-        />
+        <>
+          <RecipeSummaries
+            recipeData={recipeData}
+            showFullRecipe={showFullRecipe}
+            setShowFullRecipe={setShowFullRecipe}
+            favourites={favourites}
+            setFavourites={setFavourites}
+            setShowDeleteRecipeModal={setShowDeleteRecipeModal}
+          />
+          <button className="btn bold-btn" onClick={handleAddRecipe}>
+            Add Recipe
+          </button>
+        </>
       )}
-      {!showNewMeal && !showFullRecipe.id && (
-        <button className="bold-btn" onClick={addRecipe}>
-          Add Recipe
-        </button>
-      )}
-      {showNewMeal && (
+      {(recipeData.length === 0 || showNewMeal) && (
         <NewMeal
           setRecipeData={setRecipeData}
           setShowNewMeal={setShowNewMeal}
-          showFullRecipe={showFullRecipe}
           setShowFullRecipe={setShowFullRecipe}
           favourites={favourites}
           setFavourites={setFavourites}
@@ -67,10 +60,10 @@ export default function Recipes({
           setShowFullRecipe={setShowFullRecipe}
         />
       )}
-      {confirmModalIndex >= 0 && (
+      {showDeleteRecipeModal > 0 && (
         <ConfirmModal
-          setConfirmModalIndex={setConfirmModalIndex}
-          removeRecipe={removeRecipe}
+          setShowDeleteRecipeModal={setShowDeleteRecipeModal}
+          removeRecipe={handleRemoveRecipe}
         />
       )}
     </>

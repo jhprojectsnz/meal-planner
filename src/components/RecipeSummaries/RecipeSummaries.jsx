@@ -1,66 +1,79 @@
+import "./RecipeSummaries.css";
 import CloseButton from "../CloseButton/CloseButton";
 import defaultImg from "../../assets/default-image.jpg";
 import { FaHeart } from "react-icons/fa";
 
 export default function RecipeSummaries({
   recipeData,
-  showFullRecipe,
   setShowFullRecipe,
-  handleCloseRecipe,
-  setFavourites,
   favourites,
+  setFavourites,
+  setShowDeleteRecipeModal,
 }) {
-  const mealSummaryTidyRegex = /<\/*b>/gi;
-  const favouritesIdlist = favourites.map((favourite) => favourite.id);
+  // Regex below used to remove html elements from recipe summaries
+  const recipeSummaryTidyRegex = /<\/*b>/gi;
 
-  function addToFavourites(recipe) {
-    if (!favouritesIdlist.includes(recipe.id)) {
-      setFavourites((prev) => [...prev, recipe]);
-    } else {
-      setFavourites((prev) => {
-        return prev.filter((fav) => fav.id !== recipe.id);
-      });
-    }
+  function handleFavouritesClick(recipe) {
+    setFavourites((prevFavourites) => {
+      // Check if clicked recipe is currently a favourite
+      const isCurrentFavourite = prevFavourites.some(
+        (fav) => fav.id === recipe.id
+      );
+      // Add or remove recipe from favourites accordingly
+      return isCurrentFavourite
+        ? prevFavourites.filter((fav) => fav.id !== recipe.id)
+        : [...prevFavourites, recipe];
+    });
+  }
+
+  function handleDeleteRecipe(recipeId) {
+    setShowDeleteRecipeModal(recipeId);
   }
 
   return (
-    <section className={showFullRecipe.id ? "hidden" : "recipes"}>
+    <section className="recipes">
       <h3 className="major-heading">Recipes</h3>
-      {recipeData.map((meal, index) => {
-        //if there is a meal summary take the first sentence and remove html characters, otherwise empty string
-        const mealSummary = meal.summary
-          ? `${meal.summary.split(".")[0].replace(mealSummaryTidyRegex, "")}.`
+      {recipeData.map((recipe, index) => {
+        // If there is a meal summary take the first sentence and remove html characters, otherwise empty string
+        const recipeSummary = recipe.summary
+          ? `${recipe.summary
+              .split(".")[0]
+              .replace(recipeSummaryTidyRegex, "")}.`
           : "";
         return (
-          <div className="recipe" id={meal.id} key={meal.id} data-index={index}>
-            {/* <button className='close-recipe' onClick={handleCloseMeal}>x</button> */}
-            <CloseButton onClickFunction={handleCloseRecipe} />
-            <div className="recipe-title">
+          <div className="recipe" key={recipe.id}>
+            <CloseButton
+              onClickFunction={() => handleDeleteRecipe(recipe.id)}
+            />
+            <div className="recipe-title-container">
               <span className="recipe-number">{index + 1}</span>
-              <h5>{meal.title}</h5>
+              <h5>{recipe.title}</h5>
             </div>
             <img
               className="recipe-img"
-              src={meal.image || defaultImg}
+              src={recipe.image || defaultImg}
               alt="recipe serving example"
-            ></img>
+            />
             <div className="recipe-facts">
-              <p>Ready in: {meal.readyInMinutes} mins</p>
-              <p>Servings: {meal.servings}</p>
+              <p>Ready in: {recipe.readyInMinutes} mins</p>
+              <p>Servings: {recipe.servings}</p>
             </div>
-            <p className="recipe-summary">{mealSummary}</p>
-            <div className="btn-container" data-index={index}>
-              <button className="btn" onClick={() => addToFavourites(meal)}>
+            <p className="recipe-summary">{recipeSummary}</p>
+            <div className="btn-container">
+              <button
+                className="btn"
+                onClick={() => handleFavouritesClick(recipe)}
+              >
                 Favourites
                 <FaHeart
                   className={
-                    favouritesIdlist.includes(meal.id)
+                    favourites.some((fav) => fav.id === recipe.id)
                       ? "fav-icon fav-selected"
                       : "fav-icon"
                   }
                 />
               </button>
-              <button className="btn" onClick={() => setShowFullRecipe(meal)}>
+              <button className="btn" onClick={() => setShowFullRecipe(recipe)}>
                 Full recipe
               </button>
             </div>

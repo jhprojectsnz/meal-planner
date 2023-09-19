@@ -53,7 +53,7 @@ export default function RecipeModal({ showFullRecipe, setShowFullRecipe }) {
           {methodList}
         </div>
         <button className="btn" onClick={() => setShowFullRecipe("")}>
-          Back to recipes
+          Back
         </button>
       </div>
     </div>

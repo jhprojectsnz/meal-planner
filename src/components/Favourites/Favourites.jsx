@@ -14,7 +14,7 @@ export default function Favourites({
 
   function addFavouriteToList(recipe) {
     setRecipeData((prev) => {
-      //check if recipe is already in list, if so do not modify list (avoid duplication in recipe list)
+      // Check if recipe is already in list, if so do not modify list (avoid duplication in recipe list)
       let recipeNotInList =
         prev.filter((item) => item.id === recipe.id).length === 0;
       if (recipeNotInList) return [...prev, recipe];

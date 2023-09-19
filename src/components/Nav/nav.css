@@ -42,7 +42,7 @@
   width: 100%;
   padding: 0.5rem 0;
   border: none;
-  border-top: solid 1px var(--main-color);
+  border: solid 1px var(--main-color);
   background-color: white;
   font-family: inherit;
   font-size: 0.9rem;

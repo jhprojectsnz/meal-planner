@@ -1,0 +1,45 @@
+.meal-img-container {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  height: 200px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.meal-img {
+  width: fit-content;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.recipe-facts p {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.preview-btn-container {
+  display: flex;
+  gap: 1rem;
+  margin: 2rem auto 1rem;
+}
+
+.preview-btn-icon {
+  height: 20px;
+  width: 20px;
+  margin-left: 0.2rem;
+}
+
+.preview-btn-confirm {
+  border: 3px solid rgb(23, 110, 15);
+  border-radius: 20px;
+  color: rgb(23, 110, 15);
+}
+
+.preview-btn-reject {
+  border: 3px solid rgb(156, 19, 19);
+  border-radius: 20px;
+  color: rgb(156, 19, 19);
+}
