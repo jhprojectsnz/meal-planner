@@ -1,28 +1,26 @@
 import "./RecipeModal.css";
 
-export default function RecipeModal({ showFullRecipe, setShowFullRecipe }) {
-  const ingredientsList = showFullRecipe.extendedIngredients.map(
-    (ingredient) => {
-      const ingredientName = ingredient.name;
-      const ingredientId = ingredient.id;
-      const ingredientAmount = Math.round(ingredient.amount * 100) / 100;
-      const ingredientQuantity =
-        `${ingredientAmount} ${ingredient.unit}`.trim();
+export default function RecipeModal({ fullRecipe, setShowFullRecipe }) {
+  const ingredientsList = fullRecipe.extendedIngredients.map((ingredient) => {
+    const ingredientName = ingredient.name;
+    const ingredientId = ingredient.id;
+    const ingredientAmount = Math.round(ingredient.amount * 100) / 100;
+    const ingredientQuantity = `${ingredientAmount} ${ingredient.unit}`.trim();
 
-      return (
-        <div className="modal-ingredient" key={`modal-${ingredientId}`}>
-          <p className="modal-ingredient-text">{`${ingredientQuantity} ${ingredientName}`}</p>
-        </div>
-      );
-    }
-  );
+    return (
+      <p
+        className="modal-ingredient"
+        key={`modal-${ingredientId}`}
+      >{`${ingredientQuantity} ${ingredientName}`}</p>
+    );
+  });
 
-  //Check to see if method data is available, if so set that array to methodData
+  // Check to see if method data is available, if so set that array to methodData
   const methodData =
-    showFullRecipe.analyzedInstructions.length > 0
-      ? showFullRecipe.analyzedInstructions[0].steps
+    fullRecipe.analyzedInstructions.length > 0
+      ? fullRecipe.analyzedInstructions[0].steps
       : false;
-  //If method data is available create an array of elements - the method as numbered steps
+  // If method data is available create an array of elements - the method as numbered steps
   const methodList = methodData ? (
     methodData.map((step, index) => {
       return (
@@ -41,12 +39,12 @@ export default function RecipeModal({ showFullRecipe, setShowFullRecipe }) {
   return (
     <div className="recipe-modal-background">
       <div className="recipe-modal">
-        <h3 className="recipe-heading">{showFullRecipe.title}</h3>
-        <div className="ingredient-list">
+        <h3 className="modal-heading">{fullRecipe.title}</h3>
+        <div className="modal-ingredient-list">
           <h5>Ingredients</h5>
           {ingredientsList}
         </div>
-        <div className="method">
+        <div className="recipe-method">
           <h5>Method</h5>
           {methodList}
         </div>

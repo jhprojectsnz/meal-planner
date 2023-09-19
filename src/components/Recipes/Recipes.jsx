@@ -56,7 +56,7 @@ export default function Recipes({
       )}
       {showFullRecipe.id && (
         <RecipeModal
-          showFullRecipe={showFullRecipe}
+          fullRecipe={showFullRecipe}
           setShowFullRecipe={setShowFullRecipe}
         />
       )}
