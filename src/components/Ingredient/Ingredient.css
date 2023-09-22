@@ -1,0 +1,47 @@
+.ingredient {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.5rem 0.5rem;
+  font-size: 0.9rem;
+  text-transform: capitalize;
+}
+
+.ingredient-text {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 80%;
+}
+
+.checkbox {
+  height: 1rem;
+  width: 1rem;
+  padding: 2px;
+  border: 1px solid rgb(105, 105, 105);
+  border-radius: 2px;
+  color: white;
+  cursor: pointer;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: rgb(74, 74, 74);
+}
+
+.amounts {
+  font-size: 0.9rem;
+  color: rgb(155, 155, 155);
+}
+
+.delete-btn {
+  height: 0.9rem;
+  width: 0.9rem;
+  color: rgb(155, 155, 155);
+  cursor: pointer;
+}
+
+.delete-icon {
+  pointer-events: none;
+}

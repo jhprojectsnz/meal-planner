@@ -17,12 +17,14 @@ export default function ShoppingList({
     [recipeData]
   );
 
+  // Called when trash icon clicked - adds ingredient to the deleted list
   function removeIngredient(e) {
     setIngredientDisplayStatus((prev) => {
       return { ...prev, [e.target.parentNode.id]: "deleted" };
     });
   }
 
+  // Called when + icon in deleted list clicked - adds ingredient back to main list
   function addIngredient(e) {
     setIngredientDisplayStatus((prev) => {
       const objectCopy = { ...prev };
@@ -130,18 +132,15 @@ export default function ShoppingList({
           <ul>
             <DeletedItems
               ingredientDisplayStatus={ingredientDisplayStatus}
-              setIngredientDisplayStatus={setIngredientDisplayStatus}
               addIngredient={addIngredient}
             />
           </ul>
           <p>Press + to return item to main list</p>
         </div>
       )}
-      <div className="btn-container">
-        <button className="btn" onClick={toggleShowDeleted}>
-          {showDeleted ? "Go back" : "Deleted items"}
-        </button>
-      </div>
+      <button className="btn list-bottom-button" onClick={toggleShowDeleted}>
+        {showDeleted ? "Go back" : "Deleted items"}
+      </button>
     </div>
   );
 }

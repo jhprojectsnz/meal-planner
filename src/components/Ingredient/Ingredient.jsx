@@ -1,3 +1,4 @@
+import "./Ingredient.css";
 import { FaCheck } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 
@@ -9,7 +10,7 @@ export default function Ingredient({
   ingredientDisplayStatus,
   setIngredientDisplayStatus,
 }) {
-  function handleClick() {
+  function handleCheckboxClick() {
     setIngredientDisplayStatus((prev) => {
       if (!prev[name]) return { ...prev, [name]: "checked" };
       const objectCopy = { ...prev };
@@ -20,20 +21,20 @@ export default function Ingredient({
 
   return (
     <li className="ingredient" key={id} id={name}>
-      <FaCheck
-        className={
-          ingredientDisplayStatus[name] === "checked"
-            ? "checkbox checked"
-            : "checkbox"
-        }
-        onClick={handleClick}
-      />
       <div className="ingredient-text">
+        <FaCheck
+          className={
+            ingredientDisplayStatus[name] === "checked"
+              ? "checkbox checked"
+              : "checkbox"
+          }
+          onClick={handleCheckboxClick}
+        />
         <span
           className={
             ingredientDisplayStatus[name] === "checked" ? "checked" : ""
           }
-          onClick={handleClick}
+          onClick={handleCheckboxClick}
         >
           {name}
         </span>
