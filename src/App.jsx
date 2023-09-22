@@ -4,6 +4,7 @@ import Nav from "./components/Nav/Nav.jsx";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
 import Recipes from "./components/Recipes/Recipes";
 import Intro from "./components/Intro/Intro";
+import Favourites from "./components/Favourites/Favourites";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
@@ -375,6 +376,19 @@ function App() {
             setFavourites={setFavourites}
           />
         )}
+        {contentDisplayed === "favourites" && (
+          <Favourites
+            favourites={favourites}
+            setFavourites={setFavourites}
+            setRecipeData={setRecipeData}
+          />
+        )}
+        {/* favourites,
+  setShowFullRecipe,
+  setFavourites,
+  setRecipeData,
+  setShowNewMeal,
+  setNewRecipeSource, */}
       </main>
       <footer>
         <p>JH Projects</p>

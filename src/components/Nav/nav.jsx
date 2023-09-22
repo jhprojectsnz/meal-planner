@@ -1,4 +1,4 @@
-import "./nav.css";
+import "./Nav.css";
 import { BiHeart } from "react-icons/bi";
 import { GiHotMeal } from "react-icons/gi";
 
@@ -14,6 +14,10 @@ export default function Nav({
         buttonClicked === "recipesNavButton" ? "recipes" : "list"
       );
     }
+  }
+
+  function handleFavouritesClicked() {
+    setContentDisplayed("favourites");
   }
 
   function handleTitleClick() {
@@ -32,7 +36,7 @@ export default function Nav({
           <h1 className="title">Quick Meal Planner</h1>
           <GiHotMeal className="title-icon" />
         </div>
-        <button className="nav-btn">
+        <button className="nav-btn" onClick={handleFavouritesClicked}>
           <BiHeart className="nav-btn-icon" />
           Favourites
         </button>
