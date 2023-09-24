@@ -33,7 +33,7 @@ export default function RecipeSuggester({
     {
       id: "dairyFree",
       text: "Dairy Free",
-      "URL extension": "intolerances=Dairy",
+      "URL extension": "diet=Dairy Free",
       checked: false,
     },
     {
@@ -47,20 +47,21 @@ export default function RecipeSuggester({
   const [currentNewRecipe, setCurrentNewRecipe] = useState({});
 
   const getSingleMealData = useCallback(() => {
+    // Generate URL extension for the filters that have been selected
     const filtersURLextension = filters
       .reduce((arr, filter) => {
-        return [...arr, filter["URL extension"]];
+        return filter.checked ? [...arr, filter["URL extension"]] : arr;
       }, [])
       .join("&");
+
     const getRandomRecipe = async () => {
       console.log("fetch");
       const responce = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
           import.meta.env.VITE_API_KEY
-        }&query=${recipeType}&${filtersURLextension}&number=10&type=main course&&sort=random&&addRecipeInformation=true&fillIngredients=true`
+        }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`
       );
       const data = await responce.json();
-      console.log(data);
       const newRecipe = data.results[0];
       setCurrentNewRecipe(newRecipe);
     };
@@ -69,8 +70,12 @@ export default function RecipeSuggester({
     // setCurrentNewRecipe(data[1])
   }, [recipeType, filters]);
 
-  const filtersUsed = filters.some((filter) => filter.checked);
-  console.log(currentNewRecipe);
+  // String list of filters that have been checked
+  const filtersUsed = filters
+    .filter((filter) => filter.checked)
+    .map((filter) => filter.text)
+    .join(", ");
+
   return (
     <section className="recipe-suggester">
       <CloseButton onClickFunction={() => setShowSuggester(false)} />
@@ -81,12 +86,7 @@ export default function RecipeSuggester({
           {filtersUsed && (
             <p className="filters-list">
               <b>Filters:</b>
-              <span className="filters-text">
-                {filters
-                  .filter((filter) => filter.checked)
-                  .map((filter) => filter.text)
-                  .join(", ")}
-              </span>
+              <span className="filters-text">{filtersUsed}</span>
             </p>
           )}
           <div className="suggester-btn-container">
