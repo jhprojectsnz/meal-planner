@@ -384,8 +384,8 @@ function App() {
           <Favourites
             favourites={favourites}
             setFavourites={setFavourites}
+            recipeData={recipeData}
             setRecipeData={setRecipeData}
-            showFullRecipe={showFullRecipe}
             setShowFullRecipe={setShowFullRecipe}
           />
         )}
