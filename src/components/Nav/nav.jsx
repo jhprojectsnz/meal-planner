@@ -1,6 +1,7 @@
 import "./Nav.css";
 import { BiHeart } from "react-icons/bi";
-import { GiHotMeal } from "react-icons/gi";
+import { GiHotMeal, GiKnifeFork } from "react-icons/gi";
+import { FaRegListAlt } from "react-icons/fa";
 
 export default function Nav({
   recipeData,
@@ -36,10 +37,30 @@ export default function Nav({
           <h1 className="title">Quick Meal Planner</h1>
           <GiHotMeal className="title-icon" />
         </div>
-        <button className="nav-btn" onClick={handleFavouritesClicked}>
-          <BiHeart className="nav-btn-icon" />
-          Favourites
-        </button>
+        <div className="nav-btn-container">
+          {recipeData.length > 0 && (
+            <>
+              <button
+                className="nav-btn nav-wide"
+                onClick={() => setContentDisplayed("recipes")}
+              >
+                <GiKnifeFork className="nav-btn-icon" />
+                Recipes
+              </button>
+              <button
+                className="nav-btn nav-wide"
+                onClick={() => setContentDisplayed("list")}
+              >
+                <FaRegListAlt className="nav-btn-icon" />
+                Shopping List
+              </button>
+            </>
+          )}
+          <button className="nav-btn" onClick={handleFavouritesClicked}>
+            <BiHeart className="nav-btn-icon" />
+            Favourites
+          </button>
+        </div>
       </div>
       {recipeData.length > 0 && (
         <div className="content-nav">
