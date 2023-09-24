@@ -1,7 +1,6 @@
 import "./Recipes.css";
 import { useState } from "react";
 import NewMeal from "../NewMeal/NewMeal";
-import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import RecipeList from "../RecipeList/RecipeList";
 
 export default function Recipes({
@@ -12,21 +11,7 @@ export default function Recipes({
   showFullRecipe,
   setShowFullRecipe,
 }) {
-  const [showDeleteRecipeModal, setShowDeleteRecipeModal] = useState(0);
   const [showNewMeal, setShowNewMeal] = useState(false);
-
-  function handleAddRecipe() {
-    setShowNewMeal(true);
-  }
-
-  function handleRemoveRecipe() {
-    setRecipeData((prev) => {
-      return [...prev].filter(
-        (recipe) => parseInt(showDeleteRecipeModal) !== recipe.id
-      );
-    });
-    setShowDeleteRecipeModal(0);
-  }
 
   return (
     <>
@@ -34,13 +19,13 @@ export default function Recipes({
         <>
           <RecipeList
             recipeData={recipeData}
+            setRecipeData={setRecipeData}
             showFullRecipe={showFullRecipe}
             setShowFullRecipe={setShowFullRecipe}
             favourites={favourites}
             setFavourites={setFavourites}
-            setShowDeleteRecipeModal={setShowDeleteRecipeModal}
           />
-          <button className="btn bold-btn" onClick={handleAddRecipe}>
+          <button className="btn bold-btn" onClick={() => setShowNewMeal(true)}>
             Add Recipe
           </button>
         </>
@@ -52,12 +37,6 @@ export default function Recipes({
           setShowFullRecipe={setShowFullRecipe}
           favourites={favourites}
           setFavourites={setFavourites}
-        />
-      )}
-      {showDeleteRecipeModal > 0 && (
-        <ConfirmModal
-          setShowDeleteRecipeModal={setShowDeleteRecipeModal}
-          removeRecipe={handleRemoveRecipe}
         />
       )}
     </>

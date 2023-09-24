@@ -1,15 +1,19 @@
 import "./RecipeList.css";
-import CloseButton from "../CloseButton/CloseButton";
+import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
+import CloseButton from "../CloseButton/CloseButton";
+import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import RecipeSummary from "../RecipeSummary/RecipeSummary";
 
 export default function RecipeList({
   recipeData,
+  setRecipeData,
   setShowFullRecipe,
   favourites,
   setFavourites,
-  setShowDeleteRecipeModal,
 }) {
+  const [showDeleteRecipeModal, setShowDeleteRecipeModal] = useState(0);
+
   function handleFavouritesClick(recipe) {
     setFavourites((prevFavourites) => {
       // Check if clicked recipe is currently a favourite
@@ -23,8 +27,13 @@ export default function RecipeList({
     });
   }
 
-  function handleDeleteRecipe(recipeId) {
-    setShowDeleteRecipeModal(recipeId);
+  function handleRemoveRecipe() {
+    setRecipeData((prev) => {
+      return [...prev].filter(
+        (recipe) => parseInt(showDeleteRecipeModal) !== recipe.id
+      );
+    });
+    setShowDeleteRecipeModal(0);
   }
 
   return (
@@ -34,7 +43,7 @@ export default function RecipeList({
         return (
           <div className="recipe" key={recipe.id}>
             <CloseButton
-              onClickFunction={() => handleDeleteRecipe(recipe.id)}
+              onClickFunction={() => setShowDeleteRecipeModal(recipe.id)}
             />
             <RecipeSummary recipe={recipe} />
             <div className="recipe-list-btn-container">
@@ -58,6 +67,12 @@ export default function RecipeList({
           </div>
         );
       })}
+      {showDeleteRecipeModal > 0 && (
+        <ConfirmModal
+          setShowDeleteRecipeModal={setShowDeleteRecipeModal}
+          removeRecipe={handleRemoveRecipe}
+        />
+      )}
     </section>
   );
 }
