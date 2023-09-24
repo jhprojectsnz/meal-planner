@@ -22,3 +22,10 @@
   gap: 1rem;
   margin: 0.5rem;
 }
+
+.add-recipe-btn {
+  border: 3px solid rgb(13, 150, 1);
+  border-radius: 20px;
+  color: rgb(13, 150, 1);
+  font-weight: bold;
+}

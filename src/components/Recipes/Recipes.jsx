@@ -15,29 +15,21 @@ export default function Recipes({
 
   return (
     <>
-      {!showSuggester && recipeData.length > 0 && (
-        <>
-          <RecipeList
-            recipeData={recipeData}
-            setRecipeData={setRecipeData}
-            showFullRecipe={showFullRecipe}
-            setShowFullRecipe={setShowFullRecipe}
-            favourites={favourites}
-            setFavourites={setFavourites}
-          />
-          <button
-            className="btn bold-btn"
-            onClick={() => setShowSuggester(true)}
-          >
-            Add Recipe
-          </button>
-        </>
-      )}
-      {(recipeData.length === 0 || showSuggester) && (
+      {recipeData.length === 0 || showSuggester ? (
         <RecipeSuggester
           setRecipeData={setRecipeData}
           setShowSuggester={setShowSuggester}
           setShowFullRecipe={setShowFullRecipe}
+        />
+      ) : (
+        <RecipeList
+          recipeData={recipeData}
+          setRecipeData={setRecipeData}
+          showFullRecipe={showFullRecipe}
+          setShowFullRecipe={setShowFullRecipe}
+          favourites={favourites}
+          setFavourites={setFavourites}
+          setShowSuggester={setShowSuggester}
         />
       )}
     </>

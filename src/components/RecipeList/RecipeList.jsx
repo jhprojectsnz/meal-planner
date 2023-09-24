@@ -11,6 +11,7 @@ export default function RecipeList({
   setShowFullRecipe,
   favourites,
   setFavourites,
+  setShowSuggester,
 }) {
   const [showDeleteRecipeModal, setShowDeleteRecipeModal] = useState(0);
 
@@ -39,6 +40,7 @@ export default function RecipeList({
   return (
     <section className="recipe-list">
       <h3 className="major-heading">Recipes</h3>
+
       {recipeData.map((recipe) => {
         return (
           <div className="recipe" key={recipe.id}>
@@ -67,6 +69,12 @@ export default function RecipeList({
           </div>
         );
       })}
+      <button
+        className="btn add-recipe-btn"
+        onClick={() => setShowSuggester(true)}
+      >
+        Add Recipe
+      </button>
       {showDeleteRecipeModal > 0 && (
         <ConfirmModal
           setShowDeleteRecipeModal={setShowDeleteRecipeModal}

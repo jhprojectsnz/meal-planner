@@ -1,9 +1,6 @@
 import "./ConfirmModal.css";
 
-export default function ConfirmModal({
-  setShowDeleteRecipeModal,
-  removeRecipe,
-}) {
+export default function ConfirmModal({ setRecipeToDeleteId, removeRecipe }) {
   return (
     <div className="modal-background">
       <div className="confirm-modal">
@@ -12,7 +9,7 @@ export default function ConfirmModal({
           Are you sure you want to delete this recipe from the list?
         </h5>
         <div className="confirm-btn-container">
-          <button className="btn" onClick={() => setShowDeleteRecipeModal(0)}>
+          <button className="btn" onClick={() => setRecipeToDeleteId(0)}>
             Go back
           </button>
           <button className="bold-btn btn" onClick={removeRecipe}>
