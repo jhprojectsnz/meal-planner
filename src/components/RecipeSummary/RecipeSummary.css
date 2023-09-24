@@ -1,3 +1,7 @@
+.recipe-title {
+  width: 85%;
+  text-align: center;
+}
 .recipe-img-container {
   display: flex;
   justify-content: center;

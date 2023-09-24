@@ -13,7 +13,7 @@ export default function RecipeList({
   setFavourites,
   setShowSuggester,
 }) {
-  const [showDeleteRecipeModal, setShowDeleteRecipeModal] = useState(0);
+  const [recipeToDeleteId, setRecipeToDeleteId] = useState(0);
 
   function handleFavouritesClick(recipe) {
     setFavourites((prevFavourites) => {
@@ -31,21 +31,20 @@ export default function RecipeList({
   function handleRemoveRecipe() {
     setRecipeData((prev) => {
       return [...prev].filter(
-        (recipe) => parseInt(showDeleteRecipeModal) !== recipe.id
+        (recipe) => parseInt(recipeToDeleteId) !== recipe.id
       );
     });
-    setShowDeleteRecipeModal(0);
+    setRecipeToDeleteId(0);
   }
 
   return (
     <section className="recipe-list">
       <h3 className="major-heading">Recipes</h3>
-
       {recipeData.map((recipe) => {
         return (
           <div className="recipe" key={recipe.id}>
             <CloseButton
-              onClickFunction={() => setShowDeleteRecipeModal(recipe.id)}
+              onClickFunction={() => setRecipeToDeleteId(recipe.id)}
             />
             <RecipeSummary recipe={recipe} />
             <div className="recipe-list-btn-container">
@@ -73,11 +72,11 @@ export default function RecipeList({
         className="btn add-recipe-btn"
         onClick={() => setShowSuggester(true)}
       >
-        Add Recipe
+        New Recipe
       </button>
-      {showDeleteRecipeModal > 0 && (
+      {recipeToDeleteId > 0 && (
         <ConfirmModal
-          setShowDeleteRecipeModal={setShowDeleteRecipeModal}
+          setRecipeToDeleteId={setRecipeToDeleteId}
           removeRecipe={handleRemoveRecipe}
         />
       )}

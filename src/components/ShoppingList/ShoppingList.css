@@ -65,3 +65,10 @@
   font-size: 1rem;
   cursor: pointer;
 }
+
+.deleted-ingredient-text {
+  margin: 1rem auto 0;
+  text-align: center;
+  font-size: 0.9rem;
+  font-style: italic;
+}

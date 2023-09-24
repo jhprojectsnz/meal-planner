@@ -1,19 +1,22 @@
 import "./RecipeModal.css";
 
 export default function RecipeModal({ fullRecipe, setShowFullRecipe }) {
-  const ingredientsList = fullRecipe.extendedIngredients.map((ingredient) => {
-    const ingredientName = ingredient.name;
-    const ingredientId = ingredient.id;
-    const ingredientAmount = Math.round(ingredient.amount * 100) / 100;
-    const ingredientQuantity = `${ingredientAmount} ${ingredient.unit}`.trim();
+  const ingredientsList = fullRecipe.extendedIngredients.map(
+    (ingredient, index) => {
+      const ingredientName = ingredient.originalName;
+      const ingredientId = ingredient.id;
+      const ingredientAmount = parseFloat(ingredient.amount.toFixed(2));
+      const ingredientQuantity =
+        `${ingredientAmount} ${ingredient.unit}`.trim();
 
-    return (
-      <p
-        className="modal-ingredient"
-        key={`modal-${ingredientId}`}
-      >{`${ingredientQuantity} ${ingredientName}`}</p>
-    );
-  });
+      return (
+        <p
+          className="modal-ingredient"
+          key={`modal-${ingredientId}-${index}`}
+        >{`${ingredientQuantity} ${ingredientName}`}</p>
+      );
+    }
+  );
 
   // Check to see if method data is available, if so set that array to methodData
   const methodData =

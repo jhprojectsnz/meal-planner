@@ -10,7 +10,7 @@ function sortIngredients(recipesList) {
       // Organise data required to populate ingredient object
       const ingredientName = ingredient.name;
       const ingredientId = ingredient.id;
-      const ingredientAmount = Math.round(ingredient.amount * 100) / 100;
+      const ingredientAmount = parseFloat(ingredient.amount.toFixed(2));
       const ingredientQuantity =
         `${ingredientAmount} ${ingredient.unit}`.trim();
 

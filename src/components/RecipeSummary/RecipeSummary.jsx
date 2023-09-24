@@ -9,7 +9,7 @@ export default function RecipeSummary({ recipe }) {
     : "";
   return (
     <>
-      <h5>{recipe.title}</h5>
+      <h5 className="recipe-title">{recipe.title}</h5>
       <div className="recipe-img-container">
         <img
           key={recipe.id}

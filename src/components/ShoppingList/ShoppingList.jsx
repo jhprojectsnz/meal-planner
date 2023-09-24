@@ -135,7 +135,9 @@ export default function ShoppingList({
               addIngredient={addIngredient}
             />
           </ul>
-          <p>Press + to return item to main list</p>
+          <p className="deleted-ingredient-text">
+            Press + to return item to main list
+          </p>
         </div>
       )}
       <button className="btn list-bottom-button" onClick={toggleShowDeleted}>

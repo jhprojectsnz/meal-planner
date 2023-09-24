@@ -33,7 +33,7 @@ export default function Favourites({
         favourites.map((recipe) => {
           const recipeInList = currentRecipesIds.includes(recipe.id);
           return (
-            <div className="favourite">
+            <div className="favourite" key={recipe.id}>
               <RecipeSummary recipe={recipe} />
               <div className="fav-btn-container">
                 <button
