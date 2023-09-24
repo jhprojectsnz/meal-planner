@@ -5,9 +5,11 @@ import ShoppingList from "./components/ShoppingList/ShoppingList";
 import Recipes from "./components/Recipes/Recipes";
 import Intro from "./components/Intro/Intro";
 import Favourites from "./components/Favourites/Favourites";
+import RecipeModal from "./components/RecipeModal/RecipeModal";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
+  const [showFullRecipe, setShowFullRecipe] = useState({});
   const [contentDisplayed, setContentDisplayed] = useState("home");
   const [ingredientDisplayStatus, setIngredientDisplayStatus] = useState({});
   const [favourites, setFavourites] = useState([
@@ -372,6 +374,8 @@ function App() {
           <Recipes
             recipeData={recipeData}
             setRecipeData={setRecipeData}
+            showFullRecipe={showFullRecipe}
+            setShowFullRecipe={setShowFullRecipe}
             favourites={favourites}
             setFavourites={setFavourites}
           />
@@ -381,14 +385,16 @@ function App() {
             favourites={favourites}
             setFavourites={setFavourites}
             setRecipeData={setRecipeData}
+            showFullRecipe={showFullRecipe}
+            setShowFullRecipe={setShowFullRecipe}
           />
         )}
-        {/* favourites,
-  setShowFullRecipe,
-  setFavourites,
-  setRecipeData,
-  setShowNewMeal,
-  setNewRecipeSource, */}
+        {showFullRecipe.id && (
+          <RecipeModal
+            fullRecipe={showFullRecipe}
+            setShowFullRecipe={setShowFullRecipe}
+          />
+        )}
       </main>
       <footer>
         <p>JH Projects</p>

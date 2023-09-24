@@ -1,8 +1,8 @@
 import "./NewMeal.css";
+import { useState } from "react";
 import RecipeSource from "../RecipeSource/RecipeSource";
 import Favourites from "../Favourites/Favourites";
 import RecipeSuggester from "../RecipeSuggester/RecipeSuggester";
-import { useState } from "react";
 import CloseButton from "../CloseButton/CloseButton";
 
 export default function NewMeal({

@@ -59,6 +59,7 @@ export default function RecipeSuggester({
         }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&&sort=random&&addRecipeInformation=true&fillIngredients=true`
       );
       const data = await responce.json();
+      console.log(data);
       const newRecipe = data.results[0];
       setCurrentNewRecipe(newRecipe);
     };
@@ -68,6 +69,7 @@ export default function RecipeSuggester({
   }, [recipeType, filters]);
 
   const filtersUsed = filters.some((filter) => filter.checked);
+  console.log(currentNewRecipe);
   return (
     <>
       {!currentNewRecipe.id && !showFilters && (

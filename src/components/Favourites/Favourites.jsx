@@ -19,7 +19,8 @@ export default function Favourites({
       );
       return recipeInList ? prevList : [...prevList, recipe];
     });
-    setShowNewMeal(false);
+    // This is only required if Favourites component is being used via NewMeal
+    if (setShowNewMeal) setShowNewMeal(false);
   }
 
   return (

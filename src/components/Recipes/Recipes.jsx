@@ -1,6 +1,5 @@
 import "./Recipes.css";
 import { useState } from "react";
-import RecipeModal from "../RecipeModal/RecipeModal";
 import NewMeal from "../NewMeal/NewMeal";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import RecipeList from "../RecipeList/RecipeList";
@@ -10,8 +9,9 @@ export default function Recipes({
   setRecipeData,
   favourites,
   setFavourites,
+  showFullRecipe,
+  setShowFullRecipe,
 }) {
-  const [showFullRecipe, setShowFullRecipe] = useState({});
   const [showDeleteRecipeModal, setShowDeleteRecipeModal] = useState(0);
   const [showNewMeal, setShowNewMeal] = useState(false);
 
@@ -52,12 +52,6 @@ export default function Recipes({
           setShowFullRecipe={setShowFullRecipe}
           favourites={favourites}
           setFavourites={setFavourites}
-        />
-      )}
-      {showFullRecipe.id && (
-        <RecipeModal
-          fullRecipe={showFullRecipe}
-          setShowFullRecipe={setShowFullRecipe}
         />
       )}
       {showDeleteRecipeModal > 0 && (
