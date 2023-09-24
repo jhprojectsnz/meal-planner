@@ -11,12 +11,12 @@ export default function ConfirmModal({
         <h5 className="confirm-text">
           Are you sure you want to delete this recipe from the list?
         </h5>
-        <div className="btn-container">
-          <button className="btn" onClick={removeRecipe}>
-            Delete
-          </button>
+        <div className="confirm-btn-container">
           <button className="btn" onClick={() => setShowDeleteRecipeModal(0)}>
             Go back
+          </button>
+          <button className="bold-btn btn" onClick={removeRecipe}>
+            Delete
           </button>
         </div>
       </div>
