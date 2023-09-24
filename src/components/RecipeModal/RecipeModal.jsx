@@ -1,6 +1,16 @@
+import { useEffect } from "react";
 import "./RecipeModal.css";
 
 export default function RecipeModal({ fullRecipe, setShowFullRecipe }) {
+  // Hide the body scrollbar when modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  // Create an array of p elements for each ingredient
   const ingredientsList = fullRecipe.extendedIngredients.map(
     (ingredient, index) => {
       const ingredientName = ingredient.originalName;

@@ -5,6 +5,7 @@
   align-items: center;
   padding: 0 1rem 1rem;
 }
+
 .filter-option {
   display: flex;
   align-items: center;
@@ -14,4 +15,20 @@
 
 .filter-labels {
   font-size: 0.9rem;
+}
+
+@media screen and (min-width: 600px) {
+  .filters-container {
+    padding: 0 3rem 1rem;
+
+    & h5 {
+      margin-bottom: 1rem;
+    }
+  }
+  .filter-option {
+    margin-bottom: 1rem;
+  }
+  .filter-labels {
+    font-size: 1.1rem;
+  }
 }

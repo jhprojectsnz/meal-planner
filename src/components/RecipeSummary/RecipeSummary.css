@@ -2,6 +2,7 @@
   width: 85%;
   text-align: center;
 }
+
 .recipe-img-container {
   display: flex;
   justify-content: center;
@@ -35,4 +36,20 @@
 .recipe-summary {
   padding: 0.5rem;
   font-size: 0.9rem;
+}
+
+@media screen and (min-width: 600px) {
+  .recipe-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .recipe-img-container {
+    height: 250px;
+  }
+
+  .recipe-summary {
+    width: 80%;
+    padding: 1rem 0;
+  }
 }

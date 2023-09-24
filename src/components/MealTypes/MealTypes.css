@@ -21,6 +21,10 @@
   min-width: 70px;
   padding: 0.5rem;
   border: solid 2px transparent !important;
+
+  &:hover {
+    filter: brightness(1.5);
+  }
 }
 
 .meal-type-image {
@@ -31,4 +35,17 @@
 .selected-type {
   border: solid 2px rgb(15, 15, 110) !important;
   border-radius: 10px;
+}
+
+@media screen and (min-width: 600px) {
+  .meal-types {
+    gap: 1.5rem;
+  }
+  .meal-type-image {
+    width: 80px;
+    margin-bottom: 0.7rem;
+  }
+  .meal-type-btn {
+    padding: 0.5rem 1rem;
+  }
 }
