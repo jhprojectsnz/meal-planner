@@ -1,7 +1,7 @@
 import "./Recipes.css";
 import { useState } from "react";
-import NewMeal from "../NewMeal/NewMeal";
 import RecipeList from "../RecipeList/RecipeList";
+import RecipeSuggester from "../RecipeSuggester/RecipeSuggester";
 
 export default function Recipes({
   recipeData,
@@ -11,11 +11,11 @@ export default function Recipes({
   showFullRecipe,
   setShowFullRecipe,
 }) {
-  const [showNewMeal, setShowNewMeal] = useState(false);
+  const [showSuggester, setShowSuggester] = useState(false);
 
   return (
     <>
-      {!showNewMeal && recipeData.length > 0 && (
+      {!showSuggester && recipeData.length > 0 && (
         <>
           <RecipeList
             recipeData={recipeData}
@@ -25,18 +25,19 @@ export default function Recipes({
             favourites={favourites}
             setFavourites={setFavourites}
           />
-          <button className="btn bold-btn" onClick={() => setShowNewMeal(true)}>
+          <button
+            className="btn bold-btn"
+            onClick={() => setShowSuggester(true)}
+          >
             Add Recipe
           </button>
         </>
       )}
-      {(recipeData.length === 0 || showNewMeal) && (
-        <NewMeal
+      {(recipeData.length === 0 || showSuggester) && (
+        <RecipeSuggester
           setRecipeData={setRecipeData}
-          setShowNewMeal={setShowNewMeal}
+          setShowSuggester={setShowSuggester}
           setShowFullRecipe={setShowFullRecipe}
-          favourites={favourites}
-          setFavourites={setFavourites}
         />
       )}
     </>

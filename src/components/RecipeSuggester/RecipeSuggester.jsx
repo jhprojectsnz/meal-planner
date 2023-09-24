@@ -3,10 +3,11 @@ import { useState, useCallback } from "react";
 import MealTypes from "../MealTypes/MealTypes";
 import Filters from "../Filters/Filters";
 import NewRecipePreview from "../NewRecipePreview/NewRecipePreview";
+import CloseButton from "../CloseButton/CloseButton";
 
 export default function RecipeSuggester({
   setRecipeData,
-  setShowNewMeal,
+  setShowSuggester,
   setShowFullRecipe,
 }) {
   const [showFilters, setShowFilters] = useState(false);
@@ -56,7 +57,7 @@ export default function RecipeSuggester({
       const responce = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
           import.meta.env.VITE_API_KEY
-        }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&&sort=random&&addRecipeInformation=true&fillIngredients=true`
+        }&query=${recipeType}&${filtersURLextension}&number=10&type=main course&&sort=random&&addRecipeInformation=true&fillIngredients=true`
       );
       const data = await responce.json();
       console.log(data);
@@ -71,7 +72,8 @@ export default function RecipeSuggester({
   const filtersUsed = filters.some((filter) => filter.checked);
   console.log(currentNewRecipe);
   return (
-    <>
+    <section className="recipe-suggester">
+      <CloseButton onClickFunction={() => setShowSuggester(false)} />
       {!currentNewRecipe.id && !showFilters && (
         <>
           <h5>Select Recipe Type</h5>
@@ -109,11 +111,11 @@ export default function RecipeSuggester({
           currentNewRecipe={currentNewRecipe}
           setShowFullRecipe={setShowFullRecipe}
           recipeType={recipeType}
-          setShowNewMeal={setShowNewMeal}
+          setShowSuggester={setShowSuggester}
           setRecipeData={setRecipeData}
           getSingleMealData={getSingleMealData}
         />
       )}
-    </>
+    </section>
   );
 }

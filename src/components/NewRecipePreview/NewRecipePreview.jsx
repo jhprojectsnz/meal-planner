@@ -5,13 +5,13 @@ import RecipeSummary from "../RecipeSummary/RecipeSummary";
 export default function NewRecipePreview({
   currentNewRecipe,
   setShowFullRecipe,
-  setShowNewMeal,
+  setShowSuggester,
   setRecipeData,
   getSingleMealData,
 }) {
   function confirmNewRecipe() {
     setRecipeData((prev) => [...prev, currentNewRecipe]);
-    setShowNewMeal(false);
+    setShowSuggester(false);
   }
 
   return (
