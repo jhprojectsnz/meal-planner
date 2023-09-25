@@ -1,4 +1,5 @@
 import "./Intro.css";
+import fridgeImg from "../../assets/fridge-image.jpg";
 
 export default function Intro({ setContentDisplayed }) {
   function handleAddRecipeClick() {
@@ -6,17 +7,27 @@ export default function Intro({ setContentDisplayed }) {
   }
   return (
     <section className="intro">
-      <div className="intro-section">
-        <h3 className="intro-text">
-          Get dinner suggestions and generate an organised shopping list in
-          seconds
-        </h3>
-        <p>
-          Click <b>Add Recipe</b> to get started!
-        </p>
+      <div className="intro-title-container">
+        <p className="intro-title-small">Welcome to</p>
+        <h2 className="intro-title">- Quick Meal Planner -</h2>
       </div>
-      <button className="btn bold-btn" onClick={handleAddRecipeClick}>
-        Add Recipe
+      <p className="intro-text">
+        Time to go shopping but not sure what to cook?
+      </p>
+      <img
+        src={fridgeImg}
+        className="intro-main-image"
+        alt="Checking fridge, but not sure what to cook"
+      />
+      <div className="intro-text-container">
+        <p className="intro-text intro-bold">Let us help!</p>
+
+        <p className="intro-text">- Delicious recipe suggestions -</p>
+        <p className="intro-text">- Organised shopping list -</p>
+      </div>
+
+      <button className="intro-btn" onClick={handleAddRecipeClick}>
+        Get started
       </button>
     </section>
   );

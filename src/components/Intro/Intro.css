@@ -1,17 +1,148 @@
-.intro-section {
-  width: 90%;
+.intro {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 30px;
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: solid 1px rgb(15, 15, 110);
+}
+
+.intro-title-container {
+  margin: 1rem auto;
+}
+
+.intro-title-small {
+  font-size: 1.1rem;
+  color: grey;
+}
+
+.intro-title {
+  color: var(--main-color);
+  margin: 0.2rem 0;
+  font-size: 2.1rem;
+  text-shadow: rgb(153, 153, 153) 1px 1px 3px;
+}
+
+.intro-main-image {
+  width: 70%;
+  margin: 1.5rem 0;
 }
 
 .intro-text {
-  width: 90%;
+  width: 80%;
+  margin: 0.2rem auto;
   text-align: center;
-  padding: 0.5rem;
+  font-size: 1.2rem;
+  line-height: 1.5rem;
+}
+
+.intro-bold {
+  font-weight: bold;
+}
+
+.intro-text-container {
+  width: 100%;
+}
+
+.intro-btn {
+  margin: 2rem auto;
+  padding: 0.5rem 3rem;
+  background: transparent;
+  border: 2px solid var(--main-color);
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  box-shadow: 0 0 5px 5px rgb(216, 216, 216);
+  cursor: pointer;
+  grid-column: 1;
+
+  &:hover {
+    color: white;
+    background-color: var(--main-color);
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .intro-title {
+    font-size: 2.4rem;
+  }
+}
+
+@media screen and (min-width: 650px) {
+  .intro-title-small {
+    font-size: 1.2rem;
+  }
+
+  .intro-title {
+    font-size: 2.8rem;
+  }
+
+  .intro-text {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+    width: fit-content;
+    margin: 0.5rem auto;
+  }
+
+  .intro-main-image {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .intro {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row: repeat(4, auto);
+    justify-content: center;
+    gap: 1rem 2rem;
+    padding: 1rem 2rem;
+  }
+
+  .intro-title {
+    font-size: 2.3rem;
+  }
+
+  .intro-text {
+    grid-column: 1;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+  }
+
+  .intro-main-image {
+    grid-row: 1 / 5;
+    grid-column: 2;
+    justify-self: left;
+    height: 380px;
+    width: fit-content;
+  }
+
+  .intro-btn {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .intro {
+    gap: 1rem 4rem;
+    padding: 1rem 2rem;
+  }
+
+  .intro-title {
+    font-size: 3.5rem;
+  }
+
+  .intro-title-small {
+    font-size: 1.5rem;
+  }
+
+  .intro-text {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+  }
+
+  .intro-main-image {
+    height: 500px;
+  }
+
+  .intro-btn {
+    font-size: 1.6rem;
+  }
 }
