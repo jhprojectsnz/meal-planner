@@ -3,24 +3,31 @@ import { FaCheck } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";
 
 export default function Ingredient({
-  id,
   name,
   amount,
-  removeIngredient,
   ingredientDisplayStatus,
   setIngredientDisplayStatus,
 }) {
-  function handleCheckboxClick() {
+  // Called when checkbox is clicked
+  function handleCheckboxClick(ingredientName) {
     setIngredientDisplayStatus((prev) => {
-      if (!prev[name]) return { ...prev, [name]: "checked" };
+      if (prev[ingredientName] != "checked")
+        return { ...prev, [ingredientName]: "checked" };
       const objectCopy = { ...prev };
-      delete objectCopy[name];
+      delete objectCopy[ingredientName];
       return objectCopy;
     });
   }
 
+  // Called when trash icon clicked - adds ingredient to the deleted list
+  function removeIngredient(e) {
+    setIngredientDisplayStatus((prev) => {
+      return { ...prev, [e.target.parentNode.id]: "deleted" };
+    });
+  }
+
   return (
-    <li className="ingredient" key={id} id={name}>
+    <li className="ingredient" id={name}>
       <div className="ingredient-text">
         <FaCheck
           className={
@@ -28,7 +35,7 @@ export default function Ingredient({
               ? "checkbox checked"
               : "checkbox"
           }
-          onClick={handleCheckboxClick}
+          onClick={() => handleCheckboxClick(name)}
         />
         <span
           className={

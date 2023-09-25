@@ -17,13 +17,6 @@ export default function ShoppingList({
     [recipeData]
   );
 
-  // Called when trash icon clicked - adds ingredient to the deleted list
-  function removeIngredient(e) {
-    setIngredientDisplayStatus((prev) => {
-      return { ...prev, [e.target.parentNode.id]: "deleted" };
-    });
-  }
-
   // Called when + icon in deleted list clicked - adds ingredient back to main list
   function addIngredient(e) {
     setIngredientDisplayStatus((prev) => {
@@ -56,15 +49,15 @@ export default function ShoppingList({
         <div className="list-section" key={aisle}>
           <h5 className="list-subheading">{aisle}</h5>
           <ul id={aisle}>
-            {filteredIngredients.map((ingredient) => {
+            {filteredIngredients.map((ingredient, index) => {
+              const ingredientAmounts = ` (${ingredientsByAisle[aisle][
+                ingredient
+              ].amount.join(" + ")})`;
               return (
                 <Ingredient
-                  id={ingredientsByAisle[aisle][ingredient].id}
+                  key={`${ingredientsByAisle[aisle][ingredient].id}-${index}`}
                   name={ingredient}
-                  amount={` (${ingredientsByAisle[aisle][
-                    ingredient
-                  ].amount.join(" + ")})`}
-                  removeIngredient={removeIngredient}
+                  amount={ingredientAmounts}
                   ingredientDisplayStatus={ingredientDisplayStatus}
                   setIngredientDisplayStatus={setIngredientDisplayStatus}
                 />
@@ -78,18 +71,18 @@ export default function ShoppingList({
 
   // Should make a separate component or hook for this
   const IngredientsByRecipeElements = ingredientsByRecipe.map((recipe) => {
+    // Recipe is an object with one key/value pair: {recipetitle: [ingredient, ingredient...]}
     const recipeTitle = Object.keys(recipe)[0];
     return (
-      <div className="list-section">
+      <div className="list-section" key={recipeTitle}>
         <h5 className="list-subheading">{recipeTitle}</h5>
         <ul>
-          {recipe[recipeTitle].map((ingredient) =>
+          {recipe[recipeTitle].map((ingredient, index) =>
             ingredientDisplayStatus[ingredient.name] != "deleted" ? (
               <Ingredient
-                id={ingredient.id}
+                key={`${ingredient.id}-${index}`}
                 name={ingredient.name}
                 amount={ingredient.amount}
-                removeIngredient={removeIngredient}
                 ingredientDisplayStatus={ingredientDisplayStatus}
                 setIngredientDisplayStatus={setIngredientDisplayStatus}
               />
