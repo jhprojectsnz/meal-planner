@@ -6,6 +6,7 @@ import Recipes from "./components/Recipes/Recipes";
 import Intro from "./components/Intro/Intro";
 import Favourites from "./components/Favourites/Favourites";
 import RecipeModal from "./components/RecipeModal/RecipeModal";
+import Footer from "./components/Footer/footer";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
@@ -1921,9 +1922,7 @@ function App() {
           />
         )}
       </main>
-      <footer>
-        <p>JH Projects</p>
-      </footer>
+      <Footer />
     </div>
   );
 }

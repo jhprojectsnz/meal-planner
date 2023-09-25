@@ -61,34 +61,18 @@ main {
   color: rgb(15, 15, 110);
   border-bottom: solid 2px rgb(15, 15, 110);
 }
-
+/* 
 .section-hr {
   height: 1px;
   width: 90vw;
   background-color: rgb(15, 15, 110);
   border: none;
-}
+} */
 
 .prevent-select {
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  margin-top: auto;
-  background-color: rgb(15, 15, 110);
-}
-
-footer p {
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 100;
-  margin: 0.5rem;
 }
 
 @media (min-width: 600px) {
