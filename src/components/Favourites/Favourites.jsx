@@ -37,13 +37,13 @@ export default function Favourites({
               <RecipeSummary recipe={recipe} />
               <div className="fav-btn-container">
                 <button
-                  className="btn"
+                  className="btn fav-btn"
                   onClick={() => setShowFullRecipe(recipe)}
                 >
                   Full recipe
                 </button>
                 <button
-                  className="btn"
+                  className="btn fav-btn"
                   onClick={() =>
                     setFavourites((prev) =>
                       prev.filter((fav) => fav.id !== recipe.id)

@@ -62,7 +62,7 @@
   display: flex;
 }
 
-/* add a border between buttons */
+/* Add a border between buttons */
 .content-nav :not(:last-child) {
   border-right: var(--content-nav-border);
 }
@@ -84,6 +84,7 @@
   color: white;
 }
 
+/* Elements with this class only displayed on wide screen */
 .nav-wide {
   display: none;
 }
