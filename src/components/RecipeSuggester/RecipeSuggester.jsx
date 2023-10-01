@@ -54,22 +54,41 @@ export default function RecipeSuggester({
       }, [])
       .join("&");
 
+    // // For local development only
+    // const getRandomRecipe = async () => {
+    //   try {
+    //     const response = await fetch(
+    //       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
+    //         import.meta.env.VITE_API_KEY
+    //       }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`,
+    //     );
+    //     if (!response.ok) {
+    //       throw new Error(`Error! status:${response.status}`);
+    //     }
+    //     const data = await response.json();
+    //     const newRecipe = data.results[0];
+    //     setCurrentNewRecipe(newRecipe);
+    //   } catch (error) {
+    //     console.error("There has been an error fetching recipe data", error);
+    //   }
+    // };
+
+    // For Vercel deployment - calls serverless function
     const getRandomRecipe = async () => {
-      console.log("fetch");
+      const urlExtension = `query=${recipeType}&${filtersURLextension}`;
       try {
         const response = await fetch(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
-            import.meta.env.VITE_API_KEY
-          }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`
+          `https://VERCELURLHERE.vercel.app?extension=${urlExtension}}`,
         );
         if (!response.ok) {
-          throw new Error(`Error! status:${response.status}`);
+          const error = await response.text();
+          throw new Error(`${error} status:${response.status}}`);
         }
         const data = await response.json();
-        const newRecipe = data.results[0];
-        setCurrentNewRecipe(newRecipe);
+        setCurrentNewRecipe(data);
       } catch (error) {
         console.error("There has been an error fetching recipe data", error);
+        // Add error message to UI here
       }
     };
     getRandomRecipe();
@@ -126,18 +145,3 @@ export default function RecipeSuggester({
     </section>
   );
 }
-
-const getRandomRecipe = async () => {
-  try {
-    const responce = await fetch();
-    // URL here - with API key from a .env file
-    if (!responce.ok) {
-      throw new Error(`Error! status:${responce.status}`);
-    }
-    const data = await responce.json();
-    const newRecipe = data.results[0];
-    setCurrentNewRecipe(newRecipe);
-  } catch (error) {
-    console.error("There has been an error fetching recipe data", error);
-  }
-};
