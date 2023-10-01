@@ -5,8 +5,8 @@ import Recipes from "./components/Recipes/Recipes";
 import Intro from "./components/Intro/Intro";
 import Favourites from "./components/Favourites/Favourites";
 import RecipeModal from "./components/RecipeModal/RecipeModal";
-import Footer from "./components/Footer/footer";
 import Nav from "./components/Nav/Nav";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
