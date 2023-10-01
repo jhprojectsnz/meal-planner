@@ -1,10 +1,11 @@
+import React from "react";
 import "./Filters.css";
 export default function Filters({ setShowFilters, setFilters, filters }) {
   function handleCheckboxChange(id) {
     setFilters((prev) =>
       prev.map((filter) =>
-        filter.id === id ? { ...filter, checked: !filter.checked } : filter
-      )
+        filter.id === id ? { ...filter, checked: !filter.checked } : filter,
+      ),
     );
   }
 

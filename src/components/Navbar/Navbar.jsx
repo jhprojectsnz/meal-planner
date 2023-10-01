@@ -1,10 +1,10 @@
 import React from "react";
-import "./Nav.css";
+import "./Navbar.css";
 import { BiHeart } from "react-icons/bi";
 import { GiHotMeal, GiKnifeFork } from "react-icons/gi";
 import { FaRegListAlt } from "react-icons/fa";
 
-export default function Nav({
+export default function Navbar({
   recipeData,
   contentDisplayed,
   setContentDisplayed,

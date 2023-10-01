@@ -1,3 +1,4 @@
+import React from "react";
 import "./CloseButton.css";
 import { FaTimes } from "react-icons/fa";
 

@@ -1,3 +1,4 @@
+import React from "react";
 import "./RecipeList.css";
 import { useState } from "react";
 import { FaHeart } from "react-icons/fa";
@@ -19,7 +20,7 @@ export default function RecipeList({
     setFavourites((prevFavourites) => {
       // Check if clicked recipe is currently a favourite
       const isCurrentFavourite = prevFavourites.some(
-        (fav) => fav.id === recipe.id
+        (fav) => fav.id === recipe.id,
       );
       // Add or remove recipe from favourites accordingly
       return isCurrentFavourite
@@ -31,7 +32,7 @@ export default function RecipeList({
   function handleRemoveRecipe() {
     setRecipeData((prev) => {
       return [...prev].filter(
-        (recipe) => parseInt(recipeToDeleteId) !== recipe.id
+        (recipe) => parseInt(recipeToDeleteId) !== recipe.id,
       );
     });
     setRecipeToDeleteId(0);

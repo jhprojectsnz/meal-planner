@@ -1,3 +1,5 @@
+import React from "react";
+
 export default function DeletedItems({
   ingredientDisplayStatus,
   addIngredient,
@@ -10,6 +12,6 @@ export default function DeletedItems({
           +
         </button>
       </li>
-    ) : null
+    ) : null,
   );
 }

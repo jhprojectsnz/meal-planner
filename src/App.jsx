@@ -1,12 +1,13 @@
+import React from "react";
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
-import Nav from "./components/Nav/Nav.jsx";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
 import Recipes from "./components/Recipes/Recipes";
 import Intro from "./components/Intro/Intro";
 import Favourites from "./components/Favourites/Favourites";
 import RecipeModal from "./components/RecipeModal/RecipeModal";
-import Footer from "./components/Footer/footer";
+import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
@@ -1879,7 +1880,7 @@ function App() {
 
   return (
     <div className="app" ref={appElement}>
-      <Nav
+      <Navbar
         recipeData={recipeData}
         contentDisplayed={contentDisplayed}
         setContentDisplayed={setContentDisplayed}

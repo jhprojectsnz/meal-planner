@@ -1,3 +1,4 @@
+import React from "react";
 import "./Ingredient.css";
 import { FaCheck } from "react-icons/fa";
 import { RiDeleteBinLine } from "react-icons/ri";

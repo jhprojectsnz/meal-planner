@@ -1,3 +1,4 @@
+import React from "react";
 import "./RecipeSummary.css";
 import defaultImg from "../../assets/default-image.jpg";
 

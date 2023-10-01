@@ -1,3 +1,4 @@
+import React from "react";
 import "./ConfirmModal.css";
 
 export default function ConfirmModal({ setRecipeToDeleteId, removeRecipe }) {

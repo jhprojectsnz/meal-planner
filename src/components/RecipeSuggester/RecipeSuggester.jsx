@@ -1,3 +1,4 @@
+import React from "react";
 import "./RecipeSuggester.css";
 import { useState, useCallback } from "react";
 import MealTypes from "../MealTypes/MealTypes";

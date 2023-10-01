@@ -1,3 +1,4 @@
+import React from "react";
 import "./ShoppingList.css";
 import { useMemo, useState } from "react";
 import Ingredient from "../Ingredient/Ingredient";
@@ -14,7 +15,7 @@ export default function ShoppingList({
   const [sortBy, setSortBy] = useState("category");
   const [ingredientsByAisle, ingredientsByRecipe] = useMemo(
     () => sortIngredients(recipeData),
-    [recipeData]
+    [recipeData],
   );
 
   // Called when + icon in deleted list clicked - adds ingredient back to main list
@@ -42,7 +43,7 @@ export default function ShoppingList({
           return ingredientDisplayStatus[ingredient] === "deleted"
             ? false
             : true;
-        }
+        },
       );
       if (!filteredIngredients.length) return null;
       return (
@@ -86,7 +87,7 @@ export default function ShoppingList({
                 ingredientDisplayStatus={ingredientDisplayStatus}
                 setIngredientDisplayStatus={setIngredientDisplayStatus}
               />
-            ) : null
+            ) : null,
           )}
         </ul>
       </div>
