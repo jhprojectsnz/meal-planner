@@ -5,8 +5,8 @@ import Recipes from "./components/Recipes/Recipes";
 import Intro from "./components/Intro/Intro";
 import Favourites from "./components/Favourites/Favourites";
 import RecipeModal from "./components/RecipeModal/RecipeModal";
-import Nav from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   const [recipeData, setRecipeData] = useState([]);
@@ -1879,7 +1879,7 @@ function App() {
 
   return (
     <div className="app" ref={appElement}>
-      <Nav
+      <Navbar
         recipeData={recipeData}
         contentDisplayed={contentDisplayed}
         setContentDisplayed={setContentDisplayed}

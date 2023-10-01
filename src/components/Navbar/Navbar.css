@@ -1,0 +1,112 @@
+.nav {
+  width: 100%;
+  z-index: 10000;
+  background-color: white;
+  box-shadow: 0px 1px 6px rgb(84, 84, 84);
+  margin-bottom: 0.5rem;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+  color: var(--main-color);
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 1.2rem;
+}
+
+.title-icon {
+  height: 25px;
+  width: 25px;
+  margin-bottom: 5px;
+}
+
+.nav-btn-container {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-btn {
+  font-size: 0.6rem;
+  border: none;
+  background-color: transparent;
+  color: var(--main-color);
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(3);
+  }
+}
+
+.nav-btn-icon {
+  display: block;
+  margin: auto;
+  color: var(--main-color);
+  height: 17px;
+  width: 17px;
+  cursor: pointer;
+}
+
+.content-nav {
+  --content-nav-border: solid 1px var(--main-color);
+  display: flex;
+}
+
+/* Add a border between buttons */
+.content-nav :not(:last-child) {
+  border-right: var(--content-nav-border);
+}
+
+.content-nav-btn {
+  width: 100%;
+  padding: 0.5rem 0;
+  border: none;
+  border-top: var(--content-nav-border);
+  border-bottom: var(--content-nav-border);
+  background-color: white;
+  font-family: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.nav-selected {
+  background-color: var(--main-color);
+  color: white;
+}
+
+/* Elements with this class only displayed on wide screen */
+.nav-wide {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .nav-wide {
+    display: block;
+  }
+
+  .main-nav {
+    padding: 0.8rem 2rem;
+  }
+
+  .nav-btn {
+    font-size: 0.7rem;
+  }
+
+  .nav-btn-icon {
+    margin-bottom: 0.4rem;
+  }
+
+  .content-nav {
+    display: none;
+  }
+}
