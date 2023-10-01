@@ -22,18 +22,22 @@ export default async function handler(request, response) {
   }
 }
 
-// export default function handler(request, response) {
+// export default async function handler(request, response) {
 //     const { extension = "" } = request.query;
 //     const regex = /^query=[\w ]+(&(maxReadyTime|intolerances|diet)=[\w ]+)*$/gi;
-//     if(!regex.test(extension) || extension != "") {
+
+//     if (!regex.test(extension) || extension === "") {
 //       return response.status(400).end("Invalid input");
 //     }
-//     co
 //     const key = process.env.API_KEY;
 //     try {
-//       const recipeData = fetch(
-//         `URL-HERE?apiKey=${key}&${extension}`,
-//       ).then((response) => response.json());
+//       const fetchResponse = await fetch(
+//         `https:URL-here?apiKey=${key}&${extension}`,
+//       );
+//       if (!fetchResponse.ok) {
+//         throw new Error(`HTTP error! status ${fetchResponse.status}`);
+//       }
+//       const recipeData = await fetchResponse.json();
 //       const newRecipe = recipeData.results[0];
 //       return response.status(200).json({ newRecipe });
 //     } catch (error) {
