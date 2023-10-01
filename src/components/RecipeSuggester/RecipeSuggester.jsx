@@ -76,7 +76,10 @@ export default function RecipeSuggester({
 
     // For Vercel deployment - calls serverless function
     const getRandomRecipe = async () => {
-      const urlExtension = `query=${recipeType}&${filtersURLextension}`;
+      const urlExtension =
+        filtersURLextension.length > 0
+          ? `query=${recipeType}&${filtersURLextension}`
+          : `query=${recipeType}`;
       try {
         console.log("fetch");
         console.log(urlExtension);
