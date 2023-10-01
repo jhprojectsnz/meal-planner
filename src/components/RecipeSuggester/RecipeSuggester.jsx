@@ -78,6 +78,8 @@ export default function RecipeSuggester({
     const getRandomRecipe = async () => {
       const urlExtension = `query=${recipeType}&${filtersURLextension}`;
       try {
+        console.log("fetch");
+        console.log(urlExtension);
         const response = await fetch(
           `https://meal-planner-green.vercel.app/api/getRecipe?extension=${urlExtension}}`,
         );
@@ -86,6 +88,7 @@ export default function RecipeSuggester({
           throw new Error(`${error} status:${response.status}}`);
         }
         const data = await response.json();
+        console.log(data);
         setCurrentNewRecipe(data);
       } catch (error) {
         console.error("There has been an error fetching recipe data", error);
