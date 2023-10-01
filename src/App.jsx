@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import { useEffect, useRef, useState } from "react";
 import ShoppingList from "./components/ShoppingList/ShoppingList";
