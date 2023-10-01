@@ -57,15 +57,15 @@ export default function RecipeSuggester({
     const getRandomRecipe = async () => {
       console.log("fetch");
       try {
-        const responce = await fetch(
+        const response = await fetch(
           `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
             import.meta.env.VITE_API_KEY
           }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`
         );
-        if (!responce.ok) {
-          throw new Error(`Error! status:${responce.status}`);
+        if (!response.ok) {
+          throw new Error(`Error! status:${response.status}`);
         }
-        const data = await responce.json();
+        const data = await response.json();
         const newRecipe = data.results[0];
         setCurrentNewRecipe(newRecipe);
       } catch (error) {
@@ -126,3 +126,18 @@ export default function RecipeSuggester({
     </section>
   );
 }
+
+const getRandomRecipe = async () => {
+  try {
+    const responce = await fetch();
+    // URL here - with API key from a .env file
+    if (!responce.ok) {
+      throw new Error(`Error! status:${responce.status}`);
+    }
+    const data = await responce.json();
+    const newRecipe = data.results[0];
+    setCurrentNewRecipe(newRecipe);
+  } catch (error) {
+    console.error("There has been an error fetching recipe data", error);
+  }
+};
