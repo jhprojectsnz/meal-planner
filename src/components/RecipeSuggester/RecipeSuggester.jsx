@@ -1,3 +1,4 @@
+import React from "react";
 import "./RecipeSuggester.css";
 import { useState, useCallback } from "react";
 import MealTypes from "../MealTypes/MealTypes";
@@ -60,7 +61,7 @@ export default function RecipeSuggester({
         const response = await fetch(
           `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
             import.meta.env.VITE_API_KEY
-          }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`
+          }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`,
         );
         if (!response.ok) {
           throw new Error(`Error! status:${response.status}`);

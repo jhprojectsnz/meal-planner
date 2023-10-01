@@ -1,3 +1,4 @@
+import React from "react";
 import "./Intro.css";
 import fridgeImg from "../../assets/fridge-image.jpg";
 

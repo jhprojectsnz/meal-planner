@@ -1,3 +1,4 @@
+import React from "react";
 import "./Favourites.css";
 import { BiCheck } from "react-icons/bi";
 import { FaHeart } from "react-icons/fa";
@@ -15,7 +16,7 @@ export default function Favourites({
     setRecipeData((prevList) => {
       // Check if recipe is already in list, if so do not modify list (avoid duplication in recipe list)
       let recipeInList = prevList.some(
-        (listRecipe) => listRecipe.id === recipe.id
+        (listRecipe) => listRecipe.id === recipe.id,
       );
       return recipeInList ? prevList : [...prevList, recipe];
     });
@@ -23,7 +24,7 @@ export default function Favourites({
 
   // Create array that has the ids of recipes currently in the list
   const currentRecipesIds = useMemo(() =>
-    recipeData.map((recipe) => recipe.id)
+    recipeData.map((recipe) => recipe.id),
   );
 
   return (
@@ -46,7 +47,7 @@ export default function Favourites({
                   className="btn fav-btn"
                   onClick={() =>
                     setFavourites((prev) =>
-                      prev.filter((fav) => fav.id !== recipe.id)
+                      prev.filter((fav) => fav.id !== recipe.id),
                     )
                   }
                 >

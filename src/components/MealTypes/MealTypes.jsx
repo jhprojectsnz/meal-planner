@@ -1,3 +1,4 @@
+import React from "react";
 import "./MealTypes.css";
 import beefImg from "../../assets/beef.jpg";
 import chickenImg from "../../assets/chicken.jpg";

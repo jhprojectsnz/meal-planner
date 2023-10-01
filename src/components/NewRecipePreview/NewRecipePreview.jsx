@@ -1,3 +1,4 @@
+import React from "react";
 import "./NewRecipePreview.css";
 import { BiRefresh, BiCheck } from "react-icons/bi";
 import RecipeSummary from "../RecipeSummary/RecipeSummary";

@@ -1,3 +1,4 @@
+import React from "react";
 import "./Nav.css";
 import { BiHeart } from "react-icons/bi";
 import { GiHotMeal, GiKnifeFork } from "react-icons/gi";
@@ -12,7 +13,7 @@ export default function Nav({
     if (recipeData.length > 0) {
       const buttonClicked = e.target.id;
       setContentDisplayed(
-        buttonClicked === "recipesNavButton" ? "recipes" : "list"
+        buttonClicked === "recipesNavButton" ? "recipes" : "list",
       );
     }
   }

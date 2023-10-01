@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect } from "react";
 import "./RecipeModal.css";
 
@@ -25,7 +26,7 @@ export default function RecipeModal({ fullRecipe, setShowFullRecipe }) {
           key={`modal-${ingredientId}-${index}`}
         >{`${ingredientQuantity} ${ingredientName}`}</p>
       );
-    }
+    },
   );
 
   // Check to see if method data is available, if so set that array to methodData

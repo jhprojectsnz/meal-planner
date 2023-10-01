@@ -1,3 +1,4 @@
+import React from "react";
 import "./Navbar.css";
 import { BiHeart } from "react-icons/bi";
 import { GiHotMeal, GiKnifeFork } from "react-icons/gi";
