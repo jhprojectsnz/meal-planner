@@ -89,7 +89,7 @@ export default function RecipeSuggester({
         }
         const data = await response.json();
         console.log(data);
-        setCurrentNewRecipe(data);
+        setCurrentNewRecipe(data.newRecipe);
       } catch (error) {
         console.error("There has been an error fetching recipe data", error);
         // Add error message to UI here
