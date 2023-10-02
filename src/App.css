@@ -38,11 +38,18 @@ main {
   border-radius: 5px;
   box-shadow: 1px 1px 3px rgb(182, 180, 180);
   cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.9);
+  }
 }
 
 .bold-btn {
   background-color: rgb(15, 15, 110);
   color: white;
+  &:hover {
+    filter: brightness(1.4);
+  }
 }
 
 .major-heading {
