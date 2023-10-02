@@ -22,11 +22,11 @@ export default function NewRecipePreview({
         className="btn"
         onClick={() => setShowFullRecipe(currentNewRecipe)}
       >
-        Full recipe
+        View recipe
       </button>
       <div className="preview-btn-container">
         <button className="btn preview-btn-confirm" onClick={confirmNewRecipe}>
-          Add to list
+          Select
           <BiCheck className="preview-btn-icon" />
         </button>
         <button className="btn preview-btn-reject" onClick={getSingleMealData}>

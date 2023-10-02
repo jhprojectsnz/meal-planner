@@ -4,6 +4,7 @@
 }
 
 .recipe-img-container {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 80%;
@@ -36,6 +37,23 @@
 .recipe-summary {
   padding: 0.5rem;
   font-size: 0.9rem;
+}
+
+.fav-icon {
+  position: absolute;
+  top: 4%;
+  right: 5%;
+  height: 16px;
+  width: 16px;
+  margin-left: 0.2rem;
+  margin-bottom: 1px;
+  color: rgba(52, 52, 52, 0.7);
+  stroke: rgb(255, 255, 255);
+  stroke-width: 2rem;
+}
+
+.fav-selected {
+  color: rgb(198, 5, 37);
 }
 
 @media screen and (min-width: 600px) {

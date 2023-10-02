@@ -1,7 +1,6 @@
 import React from "react";
 import "./Favourites.css";
-import { BiCheck } from "react-icons/bi";
-import { FaHeart } from "react-icons/fa";
+import { BiCheck, BiTrash } from "react-icons/bi";
 import RecipeSummary from "../RecipeSummary/RecipeSummary";
 import { useMemo } from "react";
 
@@ -41,7 +40,7 @@ export default function Favourites({
                   className="btn fav-btn"
                   onClick={() => setShowFullRecipe(recipe)}
                 >
-                  Full recipe
+                  View recipe
                 </button>
                 <button
                   className="btn fav-btn"
@@ -51,8 +50,8 @@ export default function Favourites({
                     )
                   }
                 >
-                  Favourites
-                  <FaHeart className="fav-icon fav-selected" />
+                  Remove
+                  <BiTrash className="fav-remove-icon" />
                 </button>
               </div>
               <div className="btn-container">
@@ -61,7 +60,7 @@ export default function Favourites({
                   onClick={() => addRecipeToList(recipe)}
                 >
                   {recipeInList ? "Added " : "Add to list"}
-                  {recipeInList && <BiCheck className="fav-btn-icon" />}
+                  {recipeInList && <BiCheck className="fav-tick-icon" />}
                 </button>
               </div>
             </div>

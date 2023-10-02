@@ -130,10 +130,10 @@ export default function RecipeSuggester({
           )}
           <div className="suggester-btn-container">
             <button className="btn" onClick={() => setShowFilters(true)}>
-              Filters...
+              Add filters
             </button>
             <button className="btn bold-btn" onClick={getSingleMealData}>
-              Get Recipe
+              Find Recipe
             </button>
           </div>
         </>
@@ -158,31 +158,3 @@ export default function RecipeSuggester({
     </section>
   );
 }
-
-const getRandomRecipe = async () => {
-  const urlExtension =
-    filtersURLextension.length > 0
-      ? `query=${recipeType}&${filtersURLextension}`
-      : `query=${recipeType}`;
-  try {
-    console.log("fetch");
-    console.log(urlExtension);
-    const response = await fetch(`https://URL-HERR/api/getRecipe`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ extension: urlExtension }),
-    });
-    if (!response.ok) {
-      const error = await response.text();
-      throw new Error(`${error} status:${response.status}}`);
-    }
-    const data = await response.json();
-    console.log(data);
-    setCurrentNewRecipe(data.newRecipe);
-  } catch (error) {
-    console.error("There has been an error fetching recipe data", error);
-    // Add error message to UI here
-  }
-};

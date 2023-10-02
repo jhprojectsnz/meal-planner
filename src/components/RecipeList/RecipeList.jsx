@@ -47,23 +47,14 @@ export default function RecipeList({
             <CloseButton
               onClickFunction={() => setRecipeToDeleteId(recipe.id)}
             />
-            <RecipeSummary recipe={recipe} />
+            <RecipeSummary
+              recipe={recipe}
+              handleFavouritesClick={handleFavouritesClick}
+              favourites={favourites}
+            />
             <div className="recipe-list-btn-container">
-              <button
-                className="btn"
-                onClick={() => handleFavouritesClick(recipe)}
-              >
-                Favourites
-                <FaHeart
-                  className={
-                    favourites.some((fav) => fav.id === recipe.id)
-                      ? "fav-icon fav-selected"
-                      : "fav-icon"
-                  }
-                />
-              </button>
               <button className="btn" onClick={() => setShowFullRecipe(recipe)}>
-                Full recipe
+                View recipe
               </button>
             </div>
           </div>
@@ -73,7 +64,7 @@ export default function RecipeList({
         className="btn add-recipe-btn"
         onClick={() => setShowSuggester(true)}
       >
-        New Recipe
+        Add New Recipe
       </button>
       {recipeToDeleteId > 0 && (
         <ConfirmModal

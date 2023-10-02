@@ -1,8 +1,13 @@
 import React from "react";
 import "./RecipeSummary.css";
 import defaultImg from "../../assets/default-image.jpg";
+import { FaHeart } from "react-icons/fa";
 
-export default function RecipeSummary({ recipe }) {
+export default function RecipeSummary({
+  recipe,
+  handleFavouritesClick,
+  favourites,
+}) {
   // Used to line breaks from recipe summary
   const replaceRegex = /<\/*b>/gi;
   const mealSummary = recipe.summary
@@ -12,6 +17,16 @@ export default function RecipeSummary({ recipe }) {
     <>
       <h5 className="recipe-title">{recipe.title}</h5>
       <div className="recipe-img-container">
+        {favourites && (
+          <FaHeart
+            className={
+              favourites.some((fav) => fav.id === recipe.id)
+                ? "fav-icon fav-selected"
+                : "fav-icon"
+            }
+            onClick={() => handleFavouritesClick(recipe)}
+          />
+        )}
         <img
           key={recipe.id}
           className="recipe-img"

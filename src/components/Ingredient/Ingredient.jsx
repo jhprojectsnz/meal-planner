@@ -1,7 +1,7 @@
 import React from "react";
 import "./Ingredient.css";
 import { FaCheck } from "react-icons/fa";
-import { RiDeleteBinLine } from "react-icons/ri";
+import { BiTrash } from "react-icons/bi";
 
 export default function Ingredient({
   name,
@@ -49,7 +49,7 @@ export default function Ingredient({
         <span className="amounts">{amount}</span>
       </div>
       <div className="delete-btn" onClick={removeIngredient}>
-        <RiDeleteBinLine className="delete-icon" />
+        <BiTrash className="delete-icon" />
       </div>
     </li>
   );
