@@ -1,12 +1,13 @@
 .intro {
   width: 100%;
+  margin: auto 0;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .intro-title-container {
-  margin: 1rem auto;
+  margin: 0 auto 1rem;
 }
 
 .intro-title-small {
@@ -22,8 +23,8 @@
 }
 
 .intro-main-image {
-  width: 70%;
-  margin: 1.5rem 0;
+  width: 65%;
+  margin: 1rem 0;
 }
 
 .intro-text {
@@ -43,7 +44,7 @@
 }
 
 .intro-btn {
-  margin: 2rem auto;
+  margin: 1rem auto;
   padding: 0.5rem 3rem;
   background: transparent;
   border: 2px solid var(--main-color);

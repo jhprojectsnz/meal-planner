@@ -17,6 +17,8 @@
 }
 
 main {
+  /* Main element will take up all space not taken by nav and footer */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
