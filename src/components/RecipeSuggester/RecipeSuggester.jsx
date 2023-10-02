@@ -62,49 +62,49 @@ export default function RecipeSuggester({
       urlExtension += `&${filtersURLextension}`;
     }
 
-    // For local development only
-    const getRandomRecipe = async () => {
-      try {
-        const response = await fetch(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
-            import.meta.env.VITE_API_KEY
-          }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`,
-        );
-        if (!response.ok) {
-          throw new Error(`Error! status:${response.status}`);
-        }
-        const data = await response.json();
-        const newRecipe = data.results[0];
-        setCurrentNewRecipe(newRecipe);
-      } catch (error) {
-        console.error("There has been an error fetching recipe data", error);
-      }
-    };
-
-    // // For Vercel deployment - calls serverless function
+    // // For local development only
     // const getRandomRecipe = async () => {
     //   try {
     //     const response = await fetch(
-    //       `https://meal-planner-green.vercel.app/api/getRecipe`,
-    //       {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ extension: urlExtension }),
-    //       },
+    //       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
+    //         import.meta.env.VITE_API_KEY
+    //       }&query=${recipeType}&${filtersURLextension}&number=1&type=main course&sort=random&addRecipeInformation=true&fillIngredients=true`,
     //     );
     //     if (!response.ok) {
-    //       const error = await response.text();
-    //       throw new Error(`${error} status:${response.status}}`);
+    //       throw new Error(`Error! status:${response.status}`);
     //     }
     //     const data = await response.json();
-    //     setCurrentNewRecipe(data.newRecipe);
+    //     const newRecipe = data.results[0];
+    //     setCurrentNewRecipe(newRecipe);
     //   } catch (error) {
-    //     console.error("There has been an error fetching recipe data");
-    //     setApiError(true)
+    //     console.error("There has been an error fetching recipe data", error);
     //   }
     // };
+
+    // For Vercel deployment - calls serverless function
+    const getRandomRecipe = async () => {
+      try {
+        const response = await fetch(
+          `https://meal-planner-green.vercel.app/api/getRecipe`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ extension: urlExtension }),
+          },
+        );
+        if (!response.ok) {
+          const error = await response.text();
+          throw new Error(`${error} status:${response.status}}`);
+        }
+        const data = await response.json();
+        setCurrentNewRecipe(data.newRecipe);
+      } catch (error) {
+        console.error("There has been an error fetching recipe data");
+        setApiError(true);
+      }
+    };
     getRandomRecipe();
     //temp sample fetch for offline
     // setCurrentNewRecipe(data[1])
