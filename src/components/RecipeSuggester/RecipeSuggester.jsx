@@ -55,7 +55,7 @@ export default function RecipeSuggester({
       }, [])
       .join("&");
 
-    const urlExtension = recipeType ? `query=${recipeType}` : "";
+    let urlExtension = recipeType ? `query=${recipeType}` : "";
     if (filtersURLextension.length > 0) {
       urlExtension += `&${filtersURLextension}`;
     }
