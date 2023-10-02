@@ -11,8 +11,17 @@ export default function Recipes({
   setFavourites,
   showFullRecipe,
   setShowFullRecipe,
+  setContentDisplayed,
 }) {
   const [showSuggester, setShowSuggester] = useState(false);
+
+  function handleSuggesterClose() {
+    if (recipeData.length < 1) {
+      setContentDisplayed("home");
+    } else {
+      setShowSuggester(false);
+    }
+  }
 
   return (
     <>
@@ -21,6 +30,7 @@ export default function Recipes({
           setRecipeData={setRecipeData}
           setShowSuggester={setShowSuggester}
           setShowFullRecipe={setShowFullRecipe}
+          handleSuggesterClose={handleSuggesterClose}
         />
       ) : (
         <RecipeList

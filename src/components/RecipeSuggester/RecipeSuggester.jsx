@@ -10,6 +10,7 @@ export default function RecipeSuggester({
   setRecipeData,
   setShowSuggester,
   setShowFullRecipe,
+  handleSuggesterClose,
 }) {
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState([
@@ -59,8 +60,6 @@ export default function RecipeSuggester({
     if (filtersURLextension.length > 0) {
       urlExtension += `&${filtersURLextension}`;
     }
-
-    console.log(urlExtension);
 
     // // For local development only
     // const getRandomRecipe = async () => {
@@ -118,7 +117,7 @@ export default function RecipeSuggester({
 
   return (
     <section className="recipe-suggester">
-      <CloseButton onClickFunction={() => setShowSuggester(false)} />
+      <CloseButton onClickFunction={handleSuggesterClose} />
       {!currentNewRecipe.id && !showFilters && (
         <>
           <h5>Select Recipe Type</h5>

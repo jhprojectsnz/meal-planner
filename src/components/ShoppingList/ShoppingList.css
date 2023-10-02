@@ -54,15 +54,12 @@
 }
 
 .add-btn {
-  position: absolute;
-  right: 0;
-  height: 0.9rem;
-  width: 0.9rem;
+  padding: 0.2rem;
   color: rgb(155, 155, 155);
   background-color: white;
   border: none;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
 }
 

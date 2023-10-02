@@ -1905,6 +1905,7 @@ function App() {
             setShowFullRecipe={setShowFullRecipe}
             favourites={favourites}
             setFavourites={setFavourites}
+            setContentDisplayed={setContentDisplayed}
           />
         )}
         {contentDisplayed === "favourites" && (
