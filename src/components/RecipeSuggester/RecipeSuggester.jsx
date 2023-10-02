@@ -84,7 +84,14 @@ export default function RecipeSuggester({
         console.log("fetch");
         console.log(urlExtension);
         const response = await fetch(
-          `https://meal-planner-green.vercel.app/api/getRecipe?extension=${urlExtension}}`,
+          `https://meal-planner-green.vercel.app/api/getRecipe`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ extension: urlExtension }),
+          },
         );
         if (!response.ok) {
           const error = await response.text();
