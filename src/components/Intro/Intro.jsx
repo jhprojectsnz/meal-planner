@@ -10,7 +10,7 @@ export default function Intro({ setContentDisplayed }) {
     <section className="intro">
       <div className="intro-title-container">
         <p className="intro-title-small">Welcome to</p>
-        <h2 className="intro-title">- Quick Meal Planner -</h2>
+        <h2 className="intro-title">Quick Meal Planner</h2>
       </div>
       <p className="intro-text">
         Time to go shopping but not sure what to cook?

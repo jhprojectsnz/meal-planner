@@ -9,6 +9,7 @@
   border: solid 1px rgb(15, 15, 110);
   box-shadow: 2px 2px 4px rgb(182, 180, 180);
   border-radius: 10px;
+  margin: auto 2.5rem;
 }
 
 .recipe-suggester h5 {
@@ -16,7 +17,7 @@
   padding: 0 2rem 0.3rem 2rem;
   border-bottom: 1px solid rgb(15, 15, 110);
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .filters-list {
