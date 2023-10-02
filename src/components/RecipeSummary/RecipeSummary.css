@@ -14,7 +14,6 @@
 }
 
 .recipe-img {
-  width: fit-content;
   height: 100%;
   border-radius: 10px;
 }
@@ -49,11 +48,12 @@
   margin-bottom: 1px;
   color: rgba(52, 52, 52, 0.7);
   stroke: rgb(255, 255, 255);
-  stroke-width: 2rem;
+  stroke-width: 50px;
+  cursor: pointer;
 }
 
 .fav-selected {
-  color: rgb(198, 5, 37);
+  color: rgb(228, 0, 38);
 }
 
 @media screen and (min-width: 600px) {

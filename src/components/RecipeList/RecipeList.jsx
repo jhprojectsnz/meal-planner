@@ -1,7 +1,6 @@
 import React from "react";
 import "./RecipeList.css";
 import { useState } from "react";
-import { FaHeart } from "react-icons/fa";
 import CloseButton from "../CloseButton/CloseButton";
 import ConfirmModal from "../ConfirmModal/ConfirmModal";
 import RecipeSummary from "../RecipeSummary/RecipeSummary";
@@ -16,7 +15,10 @@ export default function RecipeList({
 }) {
   const [recipeToDeleteId, setRecipeToDeleteId] = useState(0);
 
-  function handleFavouritesClick(recipe) {
+  // Called when heart icon on recipe image is clicked
+  function handleFavouritesClick(e, recipe) {
+    // Stop click from propagating to image below
+    e.stopPropagation();
     setFavourites((prevFavourites) => {
       // Check if clicked recipe is currently a favourite
       const isCurrentFavourite = prevFavourites.some(

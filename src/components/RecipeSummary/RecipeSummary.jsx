@@ -24,7 +24,7 @@ export default function RecipeSummary({
                 ? "fav-icon fav-selected"
                 : "fav-icon"
             }
-            onClick={() => handleFavouritesClick(recipe)}
+            onClick={(e) => handleFavouritesClick(e, recipe)}
           />
         )}
         <img
