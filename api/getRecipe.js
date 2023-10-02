@@ -1,7 +1,6 @@
 export default async function handler(request, response) {
   const { extension = "" } = request.body;
   const regex = /^query=[\w ]+(&(maxReadyTime|intolerances|diet)=[\w ]+)*$/gi;
-  console.log(extension);
 
   if (!regex.test(extension) && extension != "") {
     return response.status(400).end("Invalid input");
