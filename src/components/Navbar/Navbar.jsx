@@ -1,8 +1,9 @@
 import React from "react";
 import "./Navbar.css";
 import { BiHeart } from "react-icons/bi";
-import { GiHotMeal, GiKnifeFork } from "react-icons/gi";
+import { GiKnifeFork } from "react-icons/gi";
 import { FaRegListAlt } from "react-icons/fa";
+import logoImg from "../../assets/logo.jpg";
 
 export default function Navbar({
   recipeData,
@@ -35,8 +36,8 @@ export default function Navbar({
     <nav className="nav">
       <div className="main-nav">
         <div className="title-container" onClick={handleTitleClick}>
+          <img src={logoImg} alt="Site logo" className="nav-logo" />
           <h1 className="title">Quick Meal Planner</h1>
-          <GiHotMeal className="title-icon" />
         </div>
         <div className="nav-btn-container">
           {recipeData.length > 0 && (
