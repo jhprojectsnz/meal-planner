@@ -95,7 +95,7 @@
     grid-row: repeat(4, auto);
     justify-content: center;
     gap: 1rem 2rem;
-    padding: 1rem 2rem;
+    padding: 1rem;
   }
 
   .intro-title {

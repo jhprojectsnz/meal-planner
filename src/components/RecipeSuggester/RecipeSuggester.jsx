@@ -47,6 +47,7 @@ export default function RecipeSuggester({
   ]);
   const [recipeType, setRecipeType] = useState("");
   const [currentNewRecipe, setCurrentNewRecipe] = useState({});
+  const [apiError, setApiError] = useState(false);
 
   const getSingleMealData = useCallback(() => {
     // Generate URL extension for the filters that have been selected
@@ -100,8 +101,8 @@ export default function RecipeSuggester({
     //     const data = await response.json();
     //     setCurrentNewRecipe(data.newRecipe);
     //   } catch (error) {
-    //     console.error("There has been an error fetching recipe data", error);
-    //     // Add error message to UI here
+    //     console.error("There has been an error fetching recipe data");
+    //     setApiError(true)
     //   }
     // };
     getRandomRecipe();
@@ -126,6 +127,11 @@ export default function RecipeSuggester({
             <p className="filters-list">
               <b>Filters:</b>
               <span className="filters-text">{filtersUsed}</span>
+            </p>
+          )}
+          {apiError && (
+            <p className="suggester-error">
+              Error accessing recipes - try again later
             </p>
           )}
           <div className="suggester-btn-container">

@@ -37,6 +37,12 @@
   margin: 1rem;
 }
 
+.suggester-error {
+  color: red;
+  font-style: italic;
+  text-align: center;
+}
+
 @media screen and (min-width: 600px) {
   .recipe-suggester h5 {
     margin-top: 1rem;
