@@ -62,10 +62,8 @@ export default function RecipeList({
           </div>
         );
       })}
-      <button
-        className="btn add-recipe-btn"
-        onClick={() => setShowSuggester(true)}
-      >
+      <button className="add-recipe-btn" onClick={() => setShowSuggester(true)}>
+        <span>+</span>
         Add New Recipe
       </button>
       {recipeToDeleteId > 0 && (
