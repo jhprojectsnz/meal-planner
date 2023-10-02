@@ -2,6 +2,7 @@ import React from "react";
 import "./NewRecipePreview.css";
 import { BiRefresh, BiCheck } from "react-icons/bi";
 import RecipeSummary from "../RecipeSummary/RecipeSummary";
+import CloseButton from "../CloseButton/CloseButton";
 
 export default function NewRecipePreview({
   currentNewRecipe,
@@ -9,6 +10,7 @@ export default function NewRecipePreview({
   setShowSuggester,
   setRecipeData,
   getSingleMealData,
+  setCurrentNewRecipe,
 }) {
   function confirmNewRecipe() {
     setRecipeData((prev) => [...prev, currentNewRecipe]);
@@ -18,6 +20,7 @@ export default function NewRecipePreview({
   return (
     <>
       <RecipeSummary recipe={currentNewRecipe} />
+      <CloseButton onClickFunction={() => setCurrentNewRecipe(false)} />
       <button
         className="btn"
         onClick={() => setShowFullRecipe(currentNewRecipe)}

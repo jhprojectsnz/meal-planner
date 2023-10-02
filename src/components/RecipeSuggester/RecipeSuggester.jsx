@@ -153,6 +153,7 @@ export default function RecipeSuggester({
           setShowSuggester={setShowSuggester}
           setRecipeData={setRecipeData}
           getSingleMealData={getSingleMealData}
+          setCurrentNewRecipe={setCurrentNewRecipe}
         />
       )}
     </section>
