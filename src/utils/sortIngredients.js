@@ -1,28 +1,37 @@
 function sortIngredients(recipesList) {
   const ingredientsByAisle = {};
-  const ingredientsByRecipe = [];
+  const ingredientsByRecipe = {};
 
   recipesList.forEach((recipe) => {
-    // Create array that will store data for the ingredients for this recipe
-    let recipeIngredients = [];
+    // Create a new object for this recipe
+    ingredientsByRecipe[recipe.title] = {};
     // Loop through each ingredient of the current recipt
     recipe.extendedIngredients.forEach((ingredient) => {
-      // Organise data required to populate ingredient object
+      // Organise data required for each ingredient
       const ingredientName = ingredient.name;
       const ingredientId = ingredient.id;
-      const ingredientAmount = parseFloat(ingredient.amount.toFixed(2));
-      const ingredientQuantity =
-        `${ingredientAmount} ${ingredient.unit}`.trim();
+      const ingredientQuantity = ingredient.unit
+        ? `${ingredient.amount} ${ingredient.unit}`
+        : ingredient.amount;
 
-      // For sorting ingredient by recipe
-      const newIngredient = {
+      const ingredientData = {
         id: ingredientId,
         name: ingredientName,
         amount: [ingredientQuantity],
       };
-      recipeIngredients.push(newIngredient);
 
-      // For sorting ingredient by aisle
+      // Sorting by recipe
+      // If ingredient already in recipe object - add amount to ingredient
+      if (ingredientName in ingredientsByRecipe[recipe.title]) {
+        ingredientsByRecipe[recipe.title][ingredientName].amount.push(
+          ingredientQuantity,
+        );
+        // Otherwise add ingredient
+      } else {
+        ingredientsByRecipe[recipe.title][ingredientName] = ingredientData;
+      }
+
+      // Sorting by aisle
       // ingredient.aisle may include multiple "aisles" divided by a semicolon - take the first aisle listed
       const aisle =
         ingredient.aisle && ingredient.aisle != "?"
@@ -35,30 +44,20 @@ function sortIngredients(recipesList) {
         ingredientName in ingredientsByAisle[aisle]
       ) {
         ingredientsByAisle[aisle][ingredientName].amount.push(
-          ingredientQuantity
+          ingredientQuantity,
         );
         // Aisle in object (but ingredient is not) - add ingredient to asile
       } else if (aisle in ingredientsByAisle) {
-        ingredientsByAisle[aisle][ingredientName] = {
-          id: ingredientId,
-          name: ingredientName,
-          amount: [ingredientQuantity],
-        };
+        ingredientsByAisle[aisle][ingredientName] = ingredientData;
       } // Aisle not in object - add aisle with ingredient inside
       else {
         ingredientsByAisle[aisle] = {
-          [ingredientName]: {
-            id: ingredientId,
-            name: ingredientName,
-            amount: [ingredientQuantity],
-          },
+          [ingredientName]: ingredientData,
         };
       }
     });
-    // Add ingredients for this recipe to sorted array
-    ingredientsByRecipe.push({ [recipe.title]: recipeIngredients });
   });
-  return [ingredientsByAisle, ingredientsByRecipe];
+  return { ingredientsByAisle, ingredientsByRecipe };
 }
 
 export default sortIngredients;

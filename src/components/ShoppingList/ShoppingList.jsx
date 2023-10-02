@@ -13,7 +13,9 @@ export default function ShoppingList({
 }) {
   const [showDeleted, setShowDeleted] = useState(false);
   const [sortBy, setSortBy] = useState("category");
-  const [ingredientsByAisle, ingredientsByRecipe] = useMemo(
+
+  // Get sorted lists of ingredients as objects
+  const { ingredientsByAisle, ingredientsByRecipe } = useMemo(
     () => sortIngredients(recipeData),
     [recipeData],
   );
@@ -71,27 +73,37 @@ export default function ShoppingList({
   });
 
   // Should make a separate component or hook for this
-  const IngredientsByRecipeElements = ingredientsByRecipe.map((recipe) => {
-    // Recipe is an object with one key/value pair: {recipetitle: [ingredient, ingredient...]}
-    const recipeTitle = Object.keys(recipe)[0];
-    return (
-      <div className="list-section" key={recipeTitle}>
-        <h5 className="list-subheading">{recipeTitle}</h5>
-        <ul>
-          {recipe[recipeTitle].map((ingredient, index) =>
-            ingredientDisplayStatus[ingredient.name] != "deleted" ? (
-              <Ingredient
-                key={`${ingredient.id}-${index}`}
-                name={ingredient.name}
-                amount={ingredient.amount}
-                ingredientDisplayStatus={ingredientDisplayStatus}
-                setIngredientDisplayStatus={setIngredientDisplayStatus}
-              />
-            ) : null,
-          )}
-        </ul>
-      </div>
-    );
+  const ingredientsByRecipeElements = useMemo(() => {
+    return Object.keys(ingredientsByRecipe).map((recipe) => {
+      // Remove any ingredients that have been "deleted"
+      const filteredIngredients = Object.keys(
+        ingredientsByRecipe[recipe],
+      ).filter((ingredient) => {
+        return ingredientDisplayStatus[ingredient] === "deleted" ? false : true;
+      });
+      if (!filteredIngredients.length) return null;
+      return (
+        <div className="list-section" key={recipe}>
+          <h5 className="list-subheading">{recipe}</h5>
+          <ul id={recipe}>
+            {filteredIngredients.map((ingredient, index) => {
+              const ingredientAmounts = ` (${ingredientsByRecipe[recipe][
+                ingredient
+              ].amount.join(" + ")})`;
+              return (
+                <Ingredient
+                  key={`${ingredientsByRecipe[recipe][ingredient].id}-${index}`}
+                  name={ingredient}
+                  amount={ingredientAmounts}
+                  ingredientDisplayStatus={ingredientDisplayStatus}
+                  setIngredientDisplayStatus={setIngredientDisplayStatus}
+                />
+              );
+            })}
+          </ul>
+        </div>
+      );
+    });
   });
 
   return (
@@ -117,7 +129,7 @@ export default function ShoppingList({
             </button>
           </div>
           {sortBy === "category" && ingredientsByCategoryElements}
-          {sortBy === "recipe" && IngredientsByRecipeElements}
+          {sortBy === "recipe" && ingredientsByRecipeElements}
         </>
       )}
       {showDeleted && (
