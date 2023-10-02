@@ -1,7 +1,8 @@
 .recipe-title {
   width: 85%;
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
 .recipe-img-container {
@@ -35,7 +36,7 @@
 }
 
 .recipe-summary {
-  padding: 1rem 0;
+  padding: 1rem;
   font-size: 0.8rem;
 }
 

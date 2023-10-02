@@ -24,7 +24,7 @@
   padding: 5px 25px;
   color: var(--main-color);
   background-color: white;
-  border-radius: 15px;
+  border-radius: 45px;
   border: 1px solid var(--main-color);
   box-shadow: 1px 1px 3px rgb(182, 180, 180);
   font-size: 0.9rem;
@@ -46,6 +46,7 @@
 
 .list-subheading {
   font-size: 0.9rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
