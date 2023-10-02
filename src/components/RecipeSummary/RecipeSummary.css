@@ -7,8 +7,8 @@
   position: relative;
   display: flex;
   justify-content: center;
-  width: 80%;
   height: 200px;
+  width: fit-content;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
