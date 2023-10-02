@@ -16,7 +16,7 @@ export default function Recipes({
   const [showSuggester, setShowSuggester] = useState(false);
 
   function handleSuggesterClose() {
-    if (recipeData.length < 1) {
+    if (recipeData.length === 0) {
       setContentDisplayed("home");
     } else {
       setShowSuggester(false);

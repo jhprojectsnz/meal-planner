@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import "./RecipeModal.css";
+import CloseButton from "../CloseButton/CloseButton";
 
 export default function RecipeModal({ fullRecipe, setShowFullRecipe }) {
   // Hide the body scrollbar when modal is open
@@ -53,6 +54,7 @@ export default function RecipeModal({ fullRecipe, setShowFullRecipe }) {
   return (
     <div className="recipe-modal-background">
       <div className="recipe-modal">
+        <CloseButton onClickFunction={() => setShowFullRecipe(false)} />
         <h3 className="modal-heading">{fullRecipe.title}</h3>
         <div className="modal-ingredient-list">
           <h5>Ingredients</h5>

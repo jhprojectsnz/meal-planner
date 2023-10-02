@@ -1,5 +1,7 @@
 import React from "react";
 import "./Filters.css";
+import CloseButton from "../CloseButton/CloseButton";
+
 export default function Filters({ setShowFilters, setFilters, filters }) {
   function handleCheckboxChange(id) {
     setFilters((prev) =>
@@ -15,6 +17,7 @@ export default function Filters({ setShowFilters, setFilters, filters }) {
 
   return (
     <div className="filters-container">
+      <CloseButton onClickFunction={() => setShowFilters(false)} />
       <h5>Select Filters</h5>
       <ul className="filters-list">
         {filters.map((filter) => {
