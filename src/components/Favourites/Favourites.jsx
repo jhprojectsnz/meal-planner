@@ -56,10 +56,10 @@ export default function Favourites({
               </div>
               <div className="btn-container">
                 <button
-                  className="btn fav-btn-confirm"
+                  className={`btn ${recipeInList ? "fav-added" : "fav-add"}`}
                   onClick={() => addRecipeToList(recipe)}
                 >
-                  {recipeInList ? "Added " : "Add to list"}
+                  {recipeInList ? "Added " : "Add to recipes"}
                   {recipeInList && <BiCheck className="fav-tick-icon" />}
                 </button>
               </div>

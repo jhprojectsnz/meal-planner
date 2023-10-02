@@ -7,13 +7,12 @@
 }
 
 .intro-title-container {
-  margin: 0 auto 1rem;
+  margin: 0 auto;
 }
 
 .intro-title-small {
   font-size: 0.9rem;
   color: grey;
-  margin: 0;
 }
 
 .intro-title {
@@ -25,7 +24,7 @@
 
 .intro-main-image {
   width: 65%;
-  margin: 1rem 0;
+  margin: 0.5rem 0;
 }
 
 .intro-text {
