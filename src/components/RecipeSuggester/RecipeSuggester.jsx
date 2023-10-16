@@ -85,7 +85,7 @@ export default function RecipeSuggester({
     const getRandomRecipe = async () => {
       try {
         const response = await fetch(
-          `https://meal-planner-green.vercel.app/api/getRecipe`,
+          `https://quickmealplanner.vercel.app/api/getRecipe`,
           {
             method: "POST",
             headers: {
