@@ -136,7 +136,7 @@ export default function RecipeSuggester({
           )}
           <div className="suggester-btn-container">
             <button className="btn" onClick={() => setShowFilters(true)}>
-              Add filters
+              Add Filters
             </button>
             <button className="btn bold-btn" onClick={getSingleMealData}>
               Find Recipe

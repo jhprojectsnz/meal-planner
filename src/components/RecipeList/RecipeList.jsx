@@ -56,7 +56,7 @@ export default function RecipeList({
             />
             <div className="recipe-list-btn-container">
               <button className="btn" onClick={() => setShowFullRecipe(recipe)}>
-                View recipe
+                View Recipe
               </button>
             </div>
           </div>

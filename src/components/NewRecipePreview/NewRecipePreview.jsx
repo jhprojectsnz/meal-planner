@@ -25,7 +25,7 @@ export default function NewRecipePreview({
         className="btn"
         onClick={() => setShowFullRecipe(currentNewRecipe)}
       >
-        View recipe
+        View Recipe
       </button>
       <div className="preview-btn-container">
         <button className="btn preview-btn-confirm" onClick={confirmNewRecipe}>
